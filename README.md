@@ -1,9 +1,9 @@
-# textlint-rule-ja-kaihei
+# textlint-rule-ja-tojihiraki
 
-[![Node.js CI](https://github.com/GunseiKPaseri/textlint-rule-ja-kaihei/actions/workflows/ci.yml/badge.svg)](https://github.com/GunseiKPaseri/textlint-rule-ja-kaihei/actions/workflows/ci.yml)
+[![Node.js CI](https://github.com/GunseiKPaseri/textlint-rule-ja-tojihiraki/actions/workflows/ci.yml/badge.svg)](https://github.com/GunseiKPaseri/textlint-rule-ja-tojihiraki/actions/workflows/ci.yml)
 [![textlint rule](https://img.shields.io/badge/textlint-fixable-green.svg?style=social)](https://textlint.github.io/) 
 
-`textlint-rule-ja-kaihei` は漢字の開閉を統一するtextlintルールです。
+`textlint-rule-ja-tojihiraki` は漢字の開閉を統一するtextlintルールです。
 
 漢字を「ひらく」というのは、漢字の読みや文字から受ける印象を考慮し一部をひらがなで表記することで、読みやすく誤読しにくい文章へと変えることです。「閉じる」はその逆です。
 漢字とひらがな、どちらで書くかが統一されるので、表記揺れを減らすことにも繋がります。
@@ -19,7 +19,7 @@
 ## インストール
 
 ```bash
-npm install -g textlint-rule-ja-kaihei
+npm install -g textlint-rule-ja-tojihiraki
 ```
 
 ## 使い方
@@ -29,7 +29,7 @@ npm install -g textlint-rule-ja-kaihei
 ```json
 {
   "rules": {
-    "ja-kaihei": true
+    "ja-tojihiraki": true
   }
 }
 ```
@@ -37,7 +37,7 @@ npm install -g textlint-rule-ja-kaihei
 CLIから利用する場合:
 
 ```bash
-textlint --rule ja-kaihei README.md
+textlint --rule ja-tojihiraki README.md
 ```
 
 ## 設定
@@ -49,7 +49,7 @@ textlint --rule ja-kaihei README.md
 ```jsonc
 {
   "rules": {
-    "ja-kaihei": {
+    "ja-tojihiraki": {
       ignore: [ "イタダキ" ], // 無視する値
       "force-close": [ "doushi", "jodoushi", "kandoushi", "meishi", "keiyoushi", "meishi" ], // 閉じるべき値
     },

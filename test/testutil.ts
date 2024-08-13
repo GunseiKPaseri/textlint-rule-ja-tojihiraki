@@ -33,7 +33,7 @@ export const runTestOpenClose = (
     {
       rules: [
         {
-          ruleId: 'ja-kaihei',
+          ruleId: 'ja-tojihiraki',
           rule,
           options: {
             'force-close': [nameLoma],

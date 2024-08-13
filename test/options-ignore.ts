@@ -8,7 +8,7 @@ tester.run(
   {
     rules: [
       {
-        ruleId: 'ja-kaihei',
+        ruleId: 'ja-tojihiraki',
         rule,
         options: {
           ignore: ['all'],
@@ -29,7 +29,7 @@ tester.run(
   {
     rules: [
       {
-        ruleId: 'ja-kaihei',
+        ruleId: 'ja-tojihiraki',
         rule,
         options: {
           ignore: ['fukushi'],
@@ -66,7 +66,7 @@ tester.run(
   {
     rules: [
       {
-        ruleId: 'ja-kaihei',
+        ruleId: 'ja-tojihiraki',
         rule,
         options: {
           ignore: ['イタダキ'],
