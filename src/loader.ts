@@ -24,18 +24,25 @@ type RuleOptionSet = {
   ignore: Set<string>;
   forceClose: Set<string>;
   forceOpen: Set<string>;
-}
+};
 
 function isRuleEnabled(yomi: string, nameLoma: string, oc: 'open' | 'close', ruleOptionSet: RuleOptionSet): boolean {
-  const {ignore, forceClose, forceOpen} = ruleOptionSet;
+  const { ignore, forceClose, forceOpen } = ruleOptionSet;
   // decide by yomi
-  if (ignore.has(yomi) || (oc === 'open' && forceClose.has(yomi)) || (oc === 'close' && forceOpen.has(yomi))) return false;
+  if (ignore.has(yomi) || (oc === 'open' && forceClose.has(yomi)) || (oc === 'close' && forceOpen.has(yomi)))
+    return false;
   if ((oc === 'open' && forceOpen.has(yomi)) || (oc === 'close' && forceClose.has(yomi))) return true;
   // decide by nameLoma
-  if (ignore.has(nameLoma) || (oc === 'open' && forceClose.has(nameLoma)) || (oc === 'close' && forceOpen.has(nameLoma))) return false;
+  if (
+    ignore.has(nameLoma) ||
+    (oc === 'open' && forceClose.has(nameLoma)) ||
+    (oc === 'close' && forceOpen.has(nameLoma))
+  )
+    return false;
   if ((oc === 'open' && forceOpen.has(nameLoma)) || (oc === 'close' && forceClose.has(nameLoma))) return true;
   // decide by all
-  if (ignore.has('all') || (oc === 'open' && forceClose.has('all')) || (oc === 'close' && forceOpen.has('all'))) return false;
+  if (ignore.has('all') || (oc === 'open' && forceClose.has('all')) || (oc === 'close' && forceOpen.has('all')))
+    return false;
   return true;
 }
 
@@ -86,13 +93,16 @@ function convertOpenToClose(openItem: Omit<Dictionary, 'message'>): Omit<Diction
   };
 }
 
-function shouldCloseDictionary(name: string,
+function shouldCloseDictionary(
+  name: string,
   nameLoma: string,
   ruleOptionSet: {
     forceClose: Set<string>;
     forceOpen: Set<string>;
     ignore: Set<string>;
-  }, openCloseItem: DictionaryInputs): Dictionary | undefined {
+  },
+  openCloseItem: DictionaryInputs,
+): Dictionary | undefined {
   const closeItem = !('expected' in openCloseItem) ? openCloseItem.close : convertOpenToClose(openCloseItem);
   if (typeof closeItem === 'undefined') return undefined;
   const expectedText = closeItem.expected ?? '';
@@ -141,9 +151,9 @@ export class DictionaryLoader {
     ];
 
     for (const [name, nameLoma, items] of targetList) {
-      for(const item of items) {
-        const closeRule = shouldCloseDictionary(name, nameLoma, {forceClose, forceOpen, ignore}, item)
-        const openRule = shouldOpenDictionary(name, nameLoma, {forceClose, forceOpen, ignore}, item);
+      for (const item of items) {
+        const closeRule = shouldCloseDictionary(name, nameLoma, { forceClose, forceOpen, ignore }, item);
+        const openRule = shouldOpenDictionary(name, nameLoma, { forceClose, forceOpen, ignore }, item);
         if (closeRule) {
           dict = [...dict, closeRule];
         }
