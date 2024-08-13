@@ -1,30 +1,24 @@
 {
-  "version": "1.2.0",
-  "keywords": [
-    "textlintrule",
-    "japanese"
-  ],
+  "version": "1.0.0",
+  "keywords": ["textlintrule", "japanese"],
   "main": "lib/index.js",
-  "files": [
-    "lib/",
-    "src/"
-  ],
+  "files": ["lib/", "src/"],
   "scripts": {
     "test": "textlint-scripts test",
     "build": "textlint-scripts build",
     "prepublish": "npm run --if-present build",
     "watch": "textlint-scripts build --watch",
-    "format": "biome check --apply .",
+    "format": "biome check --write .",
     "lint": "biome ci ."
   },
   "devDependencies": {
-    "@biomejs/biome": "1.4.1",
-    "@textlint/types": "^13.4.1",
-    "@types/node": "^18.18.13",
-    "textlint-scripts": "^13.4.1",
-    "textlint-tester": "^13.4.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "@biomejs/biome": "1.8.3",
+    "@textlint/types": "^14.0.5",
+    "@types/node": "^22.2.0",
+    "textlint-scripts": "^14.0.5",
+    "textlint-tester": "^14.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "name": "textlint-rule-ja-tojihiraki",
   "directories": {
