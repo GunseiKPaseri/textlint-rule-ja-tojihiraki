@@ -12,6 +12,7 @@ export type DictionaryInputs = DictionaryInput | { open?: DictionaryInput; close
 export interface DictOpts {
   ignore: string[];
   'force-close': string[];
+  'force-open': string[];
 }
 
 export type Opts = DictOpts;

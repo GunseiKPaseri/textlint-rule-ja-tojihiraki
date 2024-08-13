@@ -17,7 +17,27 @@ import type { DictOpts, Dictionary, DictionaryInputs } from './type';
 const defaultOpts: DictOpts = {
   ignore: [],
   'force-close': [],
+  'force-open': ['all'],
 };
+
+type RuleOptionSet = {
+  ignore: Set<string>;
+  forceClose: Set<string>;
+  forceOpen: Set<string>;
+}
+
+function isRuleEnabled(yomi: string, nameLoma: string, oc: 'open' | 'close', ruleOptionSet: RuleOptionSet): boolean {
+  const {ignore, forceClose, forceOpen} = ruleOptionSet;
+  // decide by yomi
+  if (ignore.has(yomi) || (oc === 'open' && forceClose.has(yomi)) || (oc === 'close' && forceOpen.has(yomi))) return false;
+  if ((oc === 'open' && forceOpen.has(yomi)) || (oc === 'close' && forceClose.has(yomi))) return true;
+  // decide by nameLoma
+  if (ignore.has(nameLoma) || (oc === 'open' && forceClose.has(nameLoma)) || (oc === 'close' && forceOpen.has(nameLoma))) return false;
+  if ((oc === 'open' && forceOpen.has(nameLoma)) || (oc === 'close' && forceClose.has(nameLoma))) return true;
+  // decide by all
+  if (ignore.has('all') || (oc === 'open' && forceClose.has('all')) || (oc === 'close' && forceOpen.has('all'))) return false;
+  return true;
+}
 
 function getSurfaceFrom(dic: Omit<Dictionary, 'message'>): string {
   return dic.tokens
@@ -32,24 +52,25 @@ function getReading(dic: Omit<Dictionary, 'message'>): string {
 
 function shouldOpenDictionary(
   name: string,
-  forceClose: Set<string>,
-  ignore: Set<string>,
-  items: DictionaryInputs[],
-): Dictionary[] {
-  return items.flatMap((openCloseItem) => {
-    const openItem = !('expected' in openCloseItem) ? openCloseItem.open : openCloseItem;
-    if (typeof openItem === 'undefined') return [];
-    const expectedText = openItem.expected ?? '';
-    const shouldOpenedText = getSurfaceFrom(openItem);
-    const reading = getReading(openItem);
-    if (expectedText === '' || forceClose.has(reading) || ignore.has(reading)) return [];
-    return [
-      {
-        ...openItem,
-        message: `ひらがなに開かれるべき${name}です: ${shouldOpenedText}(${reading})`,
-      },
-    ];
-  });
+  nameLoma: string,
+  ruleOptionSet: {
+    forceClose: Set<string>;
+    forceOpen: Set<string>;
+    ignore: Set<string>;
+  },
+  openCloseItem: DictionaryInputs,
+): Dictionary | undefined {
+  const openItem = !('expected' in openCloseItem) ? openCloseItem.open : openCloseItem;
+  if (typeof openItem === 'undefined') return undefined;
+  const expectedText = openItem.expected ?? '';
+  const shouldOpenedText = getSurfaceFrom(openItem);
+  const reading = getReading(openItem);
+  if (expectedText === '') return undefined;
+  if (!isRuleEnabled(reading, nameLoma, 'open', ruleOptionSet)) return undefined;
+  return {
+    ...openItem,
+    message: `ひらがなに開かれるべき${name}です: ${shouldOpenedText}(${reading})`,
+  };
 }
 
 function convertOpenToClose(openItem: Omit<Dictionary, 'message'>): Omit<Dictionary, 'message'> {
@@ -65,21 +86,23 @@ function convertOpenToClose(openItem: Omit<Dictionary, 'message'>): Omit<Diction
   };
 }
 
-function shouldCloseDictionary(name: string, forceClose: Set<string>, items: DictionaryInputs[]): Dictionary[] {
-  return items.flatMap((openCloseItem) => {
-    const closeItem = !('expected' in openCloseItem) ? openCloseItem.close : convertOpenToClose(openCloseItem);
-    if (typeof closeItem === 'undefined') return [];
-    const expectedText = closeItem.expected ?? '';
-    //const shouldCloseText = getSurfaceFrom(closeItem);
-    const reading = getReading(closeItem);
-    if (expectedText === '' || forceClose.has(reading)) return [];
-    return [
-      {
-        ...closeItem,
-        message: `漢字に閉じるべき${name}です: ${expectedText}(${reading})`,
-      },
-    ];
-  });
+function shouldCloseDictionary(name: string,
+  nameLoma: string,
+  ruleOptionSet: {
+    forceClose: Set<string>;
+    forceOpen: Set<string>;
+    ignore: Set<string>;
+  }, openCloseItem: DictionaryInputs): Dictionary | undefined {
+  const closeItem = !('expected' in openCloseItem) ? openCloseItem.close : convertOpenToClose(openCloseItem);
+  if (typeof closeItem === 'undefined') return undefined;
+  const expectedText = closeItem.expected ?? '';
+  //const shouldCloseText = getSurfaceFrom(closeItem);
+  const reading = getReading(closeItem);
+  if (!isRuleEnabled(reading, nameLoma, 'close', ruleOptionSet)) return undefined;
+  return {
+    ...closeItem,
+    message: `漢字に閉じるべき${name}です: ${expectedText}(${reading})`,
+  };
 }
 
 export class DictionaryLoader {
@@ -89,6 +112,7 @@ export class DictionaryLoader {
     this.options = {
       ignore: [...defaultOpts.ignore, ...(options.ignore ?? [])],
       'force-close': [...defaultOpts['force-close'], ...(options['force-close'] ?? [])],
+      'force-open': [...defaultOpts['force-open'], ...(options['force-open'] ?? [])],
     };
   }
 
@@ -97,6 +121,7 @@ export class DictionaryLoader {
 
     const ignore = new Set(this.options.ignore);
     const forceClose = new Set(this.options['force-close'].filter((x) => !ignore.has(x)));
+    const forceOpen = new Set(this.options['force-open'].filter((x) => !ignore.has(x) && !forceClose.has(x)));
 
     const targetList: [string, string, DictionaryInputs[]][] = [
       ['代名詞', 'daimeishi', daimeishi],
@@ -116,11 +141,14 @@ export class DictionaryLoader {
     ];
 
     for (const [name, nameLoma, items] of targetList) {
-      if (!(ignore.has('all') || ignore.has(nameLoma))) {
-        if (forceClose.has('all') || forceClose.has(nameLoma)) {
-          dict = [...dict, ...shouldCloseDictionary(name, forceClose, items)];
-        } else {
-          dict = [...dict, ...shouldOpenDictionary(name, forceClose, ignore, items)];
+      for(const item of items) {
+        const closeRule = shouldCloseDictionary(name, nameLoma, {forceClose, forceOpen, ignore}, item)
+        const openRule = shouldOpenDictionary(name, nameLoma, {forceClose, forceOpen, ignore}, item);
+        if (closeRule) {
+          dict = [...dict, closeRule];
+        }
+        if (openRule) {
+          dict = [...dict, openRule];
         }
       }
     }

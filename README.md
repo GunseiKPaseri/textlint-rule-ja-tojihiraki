@@ -75,6 +75,8 @@ textlint --rule ja-tojihiraki README.md
   - `"setsuzokushi"`     : 接続詞 「或いは」等
 - 各単語（読みのカタカナ）
 
+優先順位は、各単語 > 形態素の格 > `"all"`で、同じ設定値が複数含まれていたら、`ignore` > `force-close` > `force-open`です。
+
 ## 開発
 
 ### ビルド
