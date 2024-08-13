@@ -102,4 +102,4 @@ npm test
 - [閉じるべき漢字・閉じたほうがいい漢字の見分け方【ひらがな→漢字】 - ライカツ](https://lifelikewriter.com/hiragana-kanji-rules/)
 - [何でもわかる 日本語便利帳 - WORD-WISE WEB](https://dictionary.sanseido-publ.co.jp/dict/ssd36029)
 
-このプロジェクトはakiomik氏の[textlint-rule-ja-hiraku](https://github.com/akiomik/textlint-rule-ja-hiraku)をベースとしております。
+このTextlintプロジェクトはakiomik氏の[textlint-rule-ja-hiraku](https://github.com/akiomik/textlint-rule-ja-hiraku)をベースとしております。
