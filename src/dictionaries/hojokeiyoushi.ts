@@ -1,67 +1,134 @@
-export const hojokeiyoushi = [
+import type { DictionaryInputs } from '../type';
+
+export const hojokeiyoushi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい補助形容詞を使用しています: 欲しい',
-    expected: 'ほしい',
-    tokens: [
-      {
-        surface_form: '欲しい',
-        pos: '形容詞',
-        pos_detail_1: '非自立',
-        basic_form: '欲しい',
-        reading: 'ホシイ',
-      },
-    ],
+    open: {
+      expected: 'ほしい',
+      tokens: [
+        {
+          surface_form: '欲しい',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: '欲しい',
+          reading: 'ホシイ',
+        },
+      ],
+    },
+    close: {
+      expected: '欲しい',
+      tokens: [
+        {
+          surface_form: 'ほしい',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: 'ほしい',
+          reading: 'ホシイ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい補助形容詞を使用しています: 欲しかっ',
-    expected: 'ほしかっ',
-    tokens: [
-      {
-        surface_form: '欲しかっ',
-        pos: '形容詞',
-        pos_detail_1: '非自立',
-        basic_form: '欲しい',
-        reading: 'ホシカッ',
-      },
-    ],
+    open: {
+      expected: 'ほしかっ',
+      tokens: [
+        {
+          surface_form: '欲しかっ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: '欲しい',
+          reading: 'ホシカッ',
+        },
+      ],
+    },
+    close: {
+      expected: '欲しかっ',
+      tokens: [
+        {
+          surface_form: 'ほしかっ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: 'ほしい',
+          reading: 'ホシカッ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい補助形容詞を使用しています: 欲しかろ',
-    expected: 'ほしかろ',
-    tokens: [
-      {
-        surface_form: '欲しかろ',
-        pos: '形容詞',
-        pos_detail_1: '非自立',
-        basic_form: '欲しい',
-        reading: 'ホシカロ',
-      },
-    ],
+    open: {
+      expected: 'ほしかろ',
+      tokens: [
+        {
+          surface_form: '欲しかろ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: '欲しい',
+          reading: 'ホシカロ',
+        },
+      ],
+    },
+    close: {
+      expected: '欲しかろ',
+      tokens: [
+        {
+          surface_form: 'ほしかろ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: 'ほしい',
+          reading: 'ホシカロ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい補助形容詞を使用しています: 欲しく',
-    expected: 'ほしく',
-    tokens: [
-      {
-        surface_form: '欲しく',
-        pos: '形容詞',
-        pos_detail_1: '非自立',
-        basic_form: '欲しい',
-        reading: 'ホシク',
-      },
-    ],
+    open: {
+      expected: 'ほしく',
+      tokens: [
+        {
+          surface_form: '欲しく',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: '欲しい',
+          reading: 'ホシク',
+        },
+      ],
+    },
+    close: {
+      expected: '欲しく',
+      tokens: [
+        {
+          surface_form: 'ほしく',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: 'ほしい',
+          reading: 'ホシク',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい補助形容詞を使用しています: 欲しけれ',
-    expected: 'ほしけれ',
-    tokens: [
-      {
-        surface_form: '欲しけれ',
-        pos: '形容詞',
-        pos_detail_1: '非自立',
-        basic_form: '欲しい',
-        reading: 'ホシケレ',
-      },
-    ],
+    open: {
+      expected: 'ほしけれ',
+      tokens: [
+        {
+          surface_form: '欲しけれ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: '欲しい',
+          reading: 'ホシケレ',
+        },
+      ],
+    },
+    close: {
+      expected: '欲しけれ',
+      tokens: [
+        {
+          surface_form: 'ほしけれ',
+          pos: '形容詞',
+          pos_detail_1: '非自立',
+          basic_form: 'ほしい',
+          reading: 'ホシケレ',
+        },
+      ],
+    },
   },
 ];

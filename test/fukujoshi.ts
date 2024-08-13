@@ -1,28 +1,8 @@
-import TextLintTester from 'textlint-tester';
-import rule from '../src/index';
+import { type InvalidTestCases, runTestOpenClose } from './testutil';
 
-const tester = new TextLintTester();
-tester.run('副助詞', rule, {
-  invalid: [
-    {
-      text: '暑さ寒さも彼岸迄',
-      output: '暑さ寒さも彼岸まで',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい副助詞を使用しています: 迄',
-          range: [7, 8],
-        },
-      ],
-    },
-    {
-      text: 'あんた程の実力者がそういうのなら…',
-      output: 'あんたほどの実力者がそういうのなら…',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい副助詞を使用しています: 程',
-          range: [3, 4],
-        },
-      ],
-    },
-  ],
-});
+const invalidTestCases: InvalidTestCases = [
+  ['暑さ寒さも彼岸迄', '暑さ寒さも彼岸まで', [[[7, 8], '迄(マデ)']]],
+  ['あんた程の実力者がそういうのなら…', 'あんたほどの実力者がそういうのなら…', [[[3, 4], '程(ホド)']]],
+];
+
+runTestOpenClose('副助詞', 'fukujoshi', [], invalidTestCases);

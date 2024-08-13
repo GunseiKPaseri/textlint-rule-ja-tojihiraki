@@ -1,6 +1,7 @@
-export const keishikimeishi = [
+import type { DictionaryInputs } from '../type';
+
+export const keishikimeishi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 上',
     expected: 'うえ',
     tokens: [
       {
@@ -13,7 +14,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 内',
     expected: 'うち',
     tokens: [
       {
@@ -26,7 +26,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 事',
     expected: 'こと',
     tokens: [
       {
@@ -39,7 +38,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 毎',
     expected: 'ごと',
     tokens: [
       {
@@ -52,7 +50,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 度',
     expected: 'たび',
     tokens: [
       {
@@ -65,7 +62,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 為',
     expected: 'ため',
     tokens: [
       {
@@ -78,7 +74,6 @@ export const keishikimeishi = [
     ],
   },
   // {
-  //   message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 通り',
   //   expected: 'とおり',
   //   tokens: [
   //     {
@@ -91,7 +86,6 @@ export const keishikimeishi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 時',
     expected: 'とき',
     tokens: [
       {
@@ -104,7 +98,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 所',
     expected: 'ところ',
     tokens: [
       {
@@ -117,7 +110,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 中',
     expected: 'なか',
     tokens: [
       {
@@ -130,7 +122,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 筈',
     expected: 'はず',
     tokens: [
       {
@@ -143,7 +134,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 方',
     expected: 'ほう',
     tokens: [
       {
@@ -156,7 +146,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 他',
     expected: 'ほか',
     tokens: [
       {
@@ -169,7 +158,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 物',
     expected: 'もの',
     tokens: [
       {
@@ -182,7 +170,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 様',
     expected: 'よう',
     tokens: [
       {
@@ -195,7 +182,6 @@ export const keishikimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形式名詞を使用しています: 訳',
     expected: 'わけ',
     tokens: [
       {

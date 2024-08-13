@@ -1,58 +1,11 @@
-import TextLintTester from 'textlint-tester';
-import rule from '../src/index';
+import { type InvalidTestCases, runTestOpenClose } from './testutil';
 
-const tester = new TextLintTester();
-tester.run('連体詞', rule, {
-  invalid: [
-    {
-      text: '色々な色がある',
-      output: 'いろいろな色がある',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 色々',
-          range: [0, 1],
-        },
-      ],
-    },
-    {
-      text: '色んな色がある',
-      output: 'いろんな色がある',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 色んな',
-          range: [0, 1],
-        },
-      ],
-    },
-    // {
-    //   text: '所謂オタサーである',
-    //   output: 'いわゆるオタサーである',
-    //   errors: [
-    //     {
-    //       message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 所謂',
-    //       range: [0, 1],
-    //     },
-    //   ],
-    // },
-    {
-      text: '此の前友達と会った',
-      output: 'この前友達と会った',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 此の前',
-          range: [0, 1],
-        },
-      ],
-    },
-    {
-      text: '其の一',
-      output: 'その一',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 其の',
-          range: [0, 1],
-        },
-      ],
-    },
-  ],
-});
+const invalidTestCases: InvalidTestCases = [
+  ['色々な色がある', 'いろいろな色がある', [[[0, 1], '色々(イロイロ)']]],
+  ['色んな色がある', 'いろんな色がある', [[[0, 1], '色んな(イロンナ)']]],
+  // ['所謂オタサーである', 'いわゆるオタサーである', [[[0, 1], '所謂']]],
+  ['此の前友達と会った', 'この前友達と会った', [[[0, 1], '此の前(コノマエ)']]],
+  ['其の一', 'その一', [[[0, 1], '其の(ソノ)']]],
+];
+
+runTestOpenClose('連体詞', 'rentaishi', [], invalidTestCases);

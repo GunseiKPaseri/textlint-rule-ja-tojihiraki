@@ -1,6 +1,7 @@
-export const otherKeiyoushi = [
+import type { DictionaryInputs } from '../type';
+
+export const otherKeiyoushi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 有難い',
     expected: 'ありがたい',
     tokens: [
       {
@@ -12,19 +13,30 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 上手く',
-    expected: 'うまく',
-    tokens: [
-      {
-        surface_form: '上手く',
-        pos: '形容詞',
-        basic_form: '上手い',
-        reading: 'ウマク',
-      },
-    ],
+    open: {
+      expected: 'うまく',
+      tokens: [
+        {
+          surface_form: '上手く',
+          pos: '形容詞',
+          basic_form: '上手い',
+          reading: 'ウマク',
+        },
+      ],
+    },
+    close: {
+      expected: '上手く',
+      tokens: [
+        {
+          surface_form: 'うまく',
+          pos: '形容詞',
+          basic_form: 'うまい',
+          reading: 'ウマク',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 可笑しい',
     expected: 'おかしい',
     tokens: [
       {
@@ -36,7 +48,6 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 無い',
     expected: 'ない',
     tokens: [
       {
@@ -48,7 +59,6 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 不味い',
     expected: 'まずい',
     tokens: [
       {
@@ -60,7 +70,6 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 勿体ない',
     expected: 'もったいない',
     tokens: [
       {
@@ -72,7 +81,6 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 良い',
     expected: 'よい',
     tokens: [
       {
@@ -84,27 +92,51 @@ export const otherKeiyoushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 良かっ',
-    expected: 'よかっ',
-    tokens: [
-      {
-        surface_form: '良かっ',
-        pos: '形容詞',
-        basic_form: '良い',
-        reading: 'ヨカッ',
-      },
-    ],
+    open: {
+      expected: 'よかっ',
+      tokens: [
+        {
+          surface_form: '良かっ',
+          pos: '形容詞',
+          basic_form: '良い',
+          reading: 'ヨカッ',
+        },
+      ],
+    },
+    close: {
+      expected: '良かっ',
+      tokens: [
+        {
+          surface_form: 'よかっ',
+          pos: '形容詞',
+          basic_form: 'よい',
+          reading: 'ヨカッ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい形容詞を使用しています: 良く',
-    expected: 'よく',
-    tokens: [
-      {
-        surface_form: '良く',
-        pos: '形容詞',
-        basic_form: '良い',
-        reading: 'ヨク',
-      },
-    ],
+    open: {
+      expected: 'よく',
+      tokens: [
+        {
+          surface_form: '良く',
+          pos: '形容詞',
+          basic_form: '良い',
+          reading: 'ヨク',
+        },
+      ],
+    },
+    close: {
+      expected: '良く',
+      tokens: [
+        {
+          surface_form: 'よく',
+          pos: '副詞',
+          basic_form: 'よく',
+          reading: 'ヨク',
+        },
+      ],
+    },
   },
 ];

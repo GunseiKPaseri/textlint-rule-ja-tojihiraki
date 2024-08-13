@@ -1,4 +1,6 @@
-export const fukujoshi = [
+import type { DictionaryInputs } from '../type';
+
+export const fukujoshi: DictionaryInputs[] = [
   // {
   //   message: '平仮名にひらいたほうが読みやすい副助詞を使用しています: 位',
   //   expected: 'くらい',
@@ -26,7 +28,6 @@ export const fukujoshi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい副助詞を使用しています: 程',
     expected: 'ほど',
     tokens: [
       {
@@ -39,7 +40,6 @@ export const fukujoshi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副助詞を使用しています: 迄',
     expected: 'まで',
     tokens: [
       {

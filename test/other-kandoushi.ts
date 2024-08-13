@@ -1,18 +1,7 @@
-import TextLintTester from 'textlint-tester';
-import rule from '../src/index';
+import { type InvalidTestCases, runTestOpenClose } from './testutil';
 
-const tester = new TextLintTester();
-tester.run('その他 (感動詞)', rule, {
-  invalid: [
-    {
-      text: '有難うございました',
-      output: 'ありがとうございました',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい感動詞を使用しています: 有難う',
-          range: [0, 1],
-        },
-      ],
-    },
-  ],
-});
+const invalidTestCases: InvalidTestCases = [
+  ['有難うございました', 'ありがとうございました', [[[0, 1], '有難う(アリガトウ)']]],
+];
+
+runTestOpenClose('感動詞', 'kandoushi', [], invalidTestCases);

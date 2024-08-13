@@ -1,6 +1,7 @@
-export const otherKandoushi = [
+import type { DictionaryInputs } from '../type';
+
+export const otherKandoushi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい感動詞を使用しています: 有難う',
     expected: 'ありがとう',
     tokens: [
       {

@@ -1,6 +1,7 @@
-export const setsuzokushi = [
+import type { DictionaryInputs } from '../type';
+
+export const setsuzokushi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 或いは',
     expected: 'あるいは',
     tokens: [
       {
@@ -12,7 +13,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 及び',
     expected: 'および',
     tokens: [
       {
@@ -24,19 +24,30 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 且つ',
-    expected: 'かつ',
-    tokens: [
-      {
-        surface_form: '且つ',
-        pos: '副詞', // 副・接
-        basic_form: '且つ',
-        reading: 'カツ',
-      },
-    ],
+    open: {
+      expected: 'かつ',
+      tokens: [
+        {
+          surface_form: '且つ',
+          pos: '副詞', // 副・接
+          basic_form: '且つ',
+          reading: 'カツ',
+        },
+      ],
+    },
+    close: {
+      expected: '且つ',
+      tokens: [
+        {
+          surface_form: 'かつ',
+          pos: '接続詞', // 副・接
+          basic_form: 'かつ',
+          reading: 'カツ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 従って',
     expected: 'したがって',
     tokens: [
       {
@@ -48,7 +59,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 即ち',
     expected: 'すなわち',
     tokens: [
       {
@@ -60,7 +70,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 但し',
     expected: 'ただし',
     tokens: [
       {
@@ -72,7 +81,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 因みに',
     expected: 'ちなみに',
     tokens: [
       {
@@ -84,7 +92,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 尚',
     expected: 'なお',
     tokens: [
       {
@@ -96,7 +103,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 並びに',
     expected: 'ならびに',
     tokens: [
       {
@@ -108,7 +114,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 又',
     expected: 'また',
     tokens: [
       {
@@ -120,7 +125,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 又は',
     expected: 'または',
     tokens: [
       {
@@ -132,7 +136,6 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 若しくは',
     expected: 'もしくは',
     tokens: [
       {
@@ -144,15 +147,47 @@ export const setsuzokushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい接続詞を使用しています: 故に',
-    expected: 'ゆえに',
-    tokens: [
-      {
-        surface_form: '故に',
-        pos: '接続詞',
-        basic_form: '故に',
-        reading: 'ユエニ',
-      },
-    ],
+    open: {
+      expected: 'ゆえに',
+      tokens: [
+        {
+          surface_form: '故に',
+          pos: '接続詞',
+          basic_form: '故に',
+          reading: 'ユエニ',
+        },
+      ],
+    },
+    close: {
+      expected: '故に',
+      tokens: [
+        {
+          surface_form: 'ゆえ',
+          pos: '名詞',
+          pos_detail_1: '接尾',
+          basic_form: 'ゆえ',
+          reading: 'ユエ',
+        },
+        {
+          surface_form: 'に',
+          pos: '助詞',
+          basic_form: 'に',
+          reading: 'ニ',
+        },
+      ],
+    },
+  },
+  {
+    close: {
+      expected: 'その上',
+      tokens: [
+        {
+          surface_form: 'そのうえ',
+          pos: '接続詞',
+          basic_form: 'そのうえ',
+          reading: 'ソノウエ',
+        },
+      ],
+    },
   },
 ];

@@ -1,6 +1,7 @@
-export const daimeishi = [
+import type { DictionaryInputs } from '../type';
+
+export const daimeishi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 貴方',
     expected: 'あなた',
     tokens: [
       {
@@ -13,7 +14,6 @@ export const daimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 何れ',
     expected: 'いずれ',
     tokens: [
       {
@@ -26,7 +26,6 @@ export const daimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 此処',
     expected: 'ここ',
     tokens: [
       {
@@ -78,7 +77,6 @@ export const daimeishi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 何処',
     expected: 'どこ',
     tokens: [
       {
@@ -91,7 +89,6 @@ export const daimeishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 何方',
     expected: 'どなた',
     tokens: [
       {

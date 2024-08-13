@@ -1,6 +1,7 @@
-export const rentaishi = [
+import type { DictionaryInputs } from '../type';
+
+export const rentaishi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 色々',
     expected: 'いろいろ',
     tokens: [
       {
@@ -12,7 +13,6 @@ export const rentaishi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 色んな',
     expected: 'いろんな',
     tokens: [
       {
@@ -36,19 +36,37 @@ export const rentaishi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 此の前',
-    expected: 'この前',
-    tokens: [
-      {
-        surface_form: '此の前',
-        basic_form: '此の前',
-        pos: '名詞',
-        reading: 'コノマエ',
-      },
-    ],
+    open: {
+      expected: 'この前',
+      tokens: [
+        {
+          surface_form: '此の前',
+          basic_form: '此の前',
+          pos: '名詞',
+          reading: 'コノマエ',
+        },
+      ],
+    },
+    close: {
+      expected: '此の前',
+      tokens: [
+        {
+          surface_form: 'この',
+          basic_form: 'この',
+          pos: '連体詞',
+          reading: 'コノ',
+        },
+        {
+          surface_form: '前',
+          basic_form: '前',
+          pos: '名詞',
+          pos_detail_1: '副詞可能',
+          reading: 'マエ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 其の',
     expected: 'その',
     tokens: [
       {

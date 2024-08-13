@@ -3,7 +3,7 @@ import { tokenize } from 'kuromojin';
 import { createTextlintMatcher } from 'morpheme-match-textlint';
 
 import { DictionaryLoader } from './loader';
-import type { DictOpts } from './opts';
+import type { DictOpts } from './type';
 
 const report: TextlintRuleModule = (context, options) => {
   const { Syntax, RuleError, report, getSource, fixer } = context;

@@ -1,12 +1,11 @@
-# textlint-rule-ja-hiraku
+# textlint-rule-ja-kaihei
 
-[![npm version](https://badge.fury.io/js/textlint-rule-ja-hiraku.svg)](https://badge.fury.io/js/textlint-rule-ja-hiraku)
-[![Node.js CI](https://github.com/akiomik/textlint-rule-ja-hiraku/actions/workflows/ci.yml/badge.svg)](https://github.com/akiomik/textlint-rule-ja-hiraku/actions/workflows/ci.yml)
+[![Node.js CI](https://github.com/GunseiKPaseri/textlint-rule-ja-kaihei/actions/workflows/ci.yml/badge.svg)](https://github.com/GunseiKPaseri/textlint-rule-ja-kaihei/actions/workflows/ci.yml)
 [![textlint rule](https://img.shields.io/badge/textlint-fixable-green.svg?style=social)](https://textlint.github.io/) 
 
-`textlint-rule-ja-hiraku` は漢字を「ひらく」ためのtextlintルールです。
+`textlint-rule-ja-kaihei` は漢字の開閉を統一するtextlintルールです。
 
-「ひらく」というのは、漢字の読みや文字から受ける印象を考慮し一部をひらがなで表記することで、読みやすく誤読しにくい文章へと変えることです。
+漢字を「ひらく」というのは、漢字の読みや文字から受ける印象を考慮し一部をひらがなで表記することで、読みやすく誤読しにくい文章へと変えることです。「閉じる」はその逆です。
 漢字とひらがな、どちらで書くかが統一されるので、表記揺れを減らすことにも繋がります。
 
 例:
@@ -20,7 +19,7 @@
 ## インストール
 
 ```bash
-npm install -g textlint-rule-ja-hiraku
+npm install -g textlint-rule-ja-kaihei
 ```
 
 ## 使い方
@@ -30,7 +29,7 @@ npm install -g textlint-rule-ja-hiraku
 ```json
 {
   "rules": {
-    "ja-hiraku": true
+    "ja-kaihei": true
   }
 }
 ```
@@ -38,37 +37,43 @@ npm install -g textlint-rule-ja-hiraku
 CLIから利用する場合:
 
 ```bash
-textlint --rule ja-hiraku README.md
+textlint --rule ja-kaihei README.md
 ```
 
 ## 設定
 
-形態素の格ごとにチェックするかどうかを切り替え可能です。
+閉じるか無視するか、各種例外を設定することができます。
 
-デフォルトでは全てチェック対象となっていますが、
-ほどんどのケースでは以下のように代名詞・副助詞・副詞・補助動詞・補助形容詞・形式名詞・連体詞・接続詞のチェックだけで十分かもしれません。
+デフォルトでは全てを開くべきとなっています。
 
 ```jsonc
 {
   "rules": {
-    "ja-hiraku": {
-      "daimeishi": true,        // 代名詞のチェック (default: true)
-      "fukujoshi": true,        // 副助詞のチェック (default: true)
-      "fukushi": true,          // 副詞のチェック (default: true)
-      "hojodoushi": true,       // 補助動詞のチェック (default: true)
-      "hojokeiyoushi": true,    // 補助形容詞のチェック (default: true)
-      "keishikimeishi": true,   // 形式名詞のチェック (default: true)
-      "other-doushi": false,    // その他 (動詞) のチェック (default: true)
-      "other-jodoushi": false,  // その他 (助動詞) のチェック (default: true)
-      "other-kandoushi": false, // その他 (感動詞) のチェック (default: true)
-      "other-keiyoushi": false, // その他 (形容詞) のチェック (default: true)
-      "other-meishi": false,    // その他 (名詞) のチェック (default: true)
-      "rentaishi": true,        // 連体詞のチェック (default: true)
-      "setsuzokushi": true,     // 接続詞のチェック (default: true)
+    "ja-kaihei": {
+      ignore: [ "イタダキ" ], // 無視する値
+      "force-close": [ "doushi", "jodoushi", "kandoushi", "meishi", "keiyoushi", "meishi" ], // 閉じるべき値
     },
   }
 }
 ```
+
+- `"all"`：全ての品詞を対象
+- 形態素の格
+  - `"daimeishi"`        : 代名詞 「貴方」等
+  - `"fukugoukakujoshi"` : 複合格助詞 「を始め」
+  - `"fukujoshi"`        : 副助詞 「程」等
+  - `"fukushi"`          : 副詞 「余り」等
+  - `"hojodoushi"`       : 補助動詞 「上げ」等
+  - `"hojokeiyoushi"`    : 補助形容詞 「欲しい」等
+  - `"keishikimeishi"`   : 形式名詞 「事」等
+  - `"doushi`            : 動詞 「分かる」等
+  - `"jodoushi"`         : 助動詞 「御座い」等
+  - `"kandoushi"`        : 感動詞 「有難う」等
+  - `"keiyoushi"`        : 形容詞 「有難い」等
+  - `"meishi"`           : 名詞 「全て」等
+  - `"rentaishi"`        : 連体詞 「色んな」等
+  - `"setsuzokushi"`     : 接続詞 「或いは」等
+- 各単語（読みのカタカナ）
 
 ## 開発
 
@@ -96,3 +101,5 @@ npm test
 - [漢字の閉じ開きとは？漢字とひらがなを使い分けて読みやすい文章を作成しよう - ALTENAS](https://altenas.jp/blog/chinese-characters-close-up-or-open)
 - [閉じるべき漢字・閉じたほうがいい漢字の見分け方【ひらがな→漢字】 - ライカツ](https://lifelikewriter.com/hiragana-kanji-rules/)
 - [何でもわかる 日本語便利帳 - WORD-WISE WEB](https://dictionary.sanseido-publ.co.jp/dict/ssd36029)
+
+このプロジェクトはakiomik氏の[textlint-rule-ja-hiraku](https://github.com/akiomik/textlint-rule-ja-hiraku)をベースとしております。

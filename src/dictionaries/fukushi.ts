@@ -1,6 +1,7 @@
-export const fukushi = [
+import type { DictionaryInputs } from '../type';
+
+export const fukushi: DictionaryInputs[] = [
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 余り',
     expected: 'あまり',
     tokens: [
       {
@@ -12,19 +13,36 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 後で',
-    expected: 'あとで',
-    tokens: [
-      {
-        surface_form: '後で',
-        pos: '副詞',
-        basic_form: '後で',
-        reading: 'アトデ',
-      },
-    ],
+    open: {
+      expected: 'あとで',
+      tokens: [
+        {
+          surface_form: '後で',
+          pos: '副詞',
+          basic_form: '後で',
+          reading: 'アトデ',
+        },
+      ],
+    },
+    close: {
+      expected: '後で',
+      tokens: [
+        {
+          surface_form: 'あと',
+          pos: '名詞',
+          basic_form: 'あと',
+          reading: 'アト',
+        },
+        {
+          surface_form: 'で',
+          pos: '助詞',
+          basic_form: 'で',
+          reading: 'デ',
+        },
+      ],
+    },
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 如何にも',
     expected: 'いかにも',
     tokens: [
       {
@@ -36,7 +54,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 一層',
     expected: 'いっそう',
     tokens: [
       {
@@ -48,7 +65,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 色々',
     expected: 'いろいろ',
     tokens: [
       {
@@ -60,7 +76,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 凡そ',
     expected: 'およそ',
     tokens: [
       {
@@ -72,7 +87,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 却って',
     expected: 'かえって',
     tokens: [
       {
@@ -84,7 +98,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 極めて',
     expected: 'きわめて',
     tokens: [
       {
@@ -96,7 +109,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 流石',
     expected: 'さすが',
     tokens: [
       {
@@ -108,7 +120,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 更に',
     expected: 'さらに',
     tokens: [
       {
@@ -120,7 +131,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 暫く',
     expected: 'しばらく',
     tokens: [
       {
@@ -132,7 +142,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 随分',
     expected: 'ずいぶん',
     tokens: [
       {
@@ -144,7 +153,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 既に',
     expected: 'すでに',
     tokens: [
       {
@@ -156,7 +164,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 折角',
     expected: 'せっかく',
     tokens: [
       {
@@ -168,7 +175,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 是非',
     expected: 'ぜひ',
     tokens: [
       {
@@ -180,7 +186,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 大層',
     expected: 'たいそう',
     tokens: [
       {
@@ -192,7 +197,6 @@ export const fukushi = [
     ],
   },
   // {
-  //   message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 大変',
   //   expected: 'たいへん',
   //   tokens: [
   //     {
@@ -204,19 +208,31 @@ export const fukushi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 沢山',
-    expected: 'たくさん',
-    tokens: [
-      {
-        surface_form: '沢山',
-        pos: '副詞',
-        basic_form: '沢山',
-        reading: 'タクサン',
-      },
-    ],
+    open: {
+      expected: 'たくさん',
+      tokens: [
+        {
+          surface_form: '沢山',
+          pos: '副詞',
+          basic_form: '沢山',
+          reading: 'タクサン',
+        },
+      ],
+    },
+    close: {
+      expected: '沢山',
+      tokens: [
+        {
+          surface_form: 'たくさん',
+          pos: '名詞',
+          pos_detail_1: '副詞可能',
+          basic_form: 'たくさん',
+          reading: 'タクサン',
+        },
+      ],
+    },
   },
   // {
-  //   message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 例え',
   //   expected: 'たとえ',
   //   tokens: [
   //     {
@@ -228,7 +244,6 @@ export const fukushi = [
   //   ],
   // },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 丁度',
     expected: 'ちょうど',
     tokens: [
       {
@@ -240,7 +255,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 時々',
     expected: 'ときどき',
     tokens: [
       {
@@ -252,7 +266,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 何故',
     expected: 'なぜ',
     tokens: [
       {
@@ -264,7 +277,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 何故か',
     expected: 'なぜか',
     tokens: [
       {
@@ -276,7 +288,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 殆ど',
     expected: 'ほとんど',
     tokens: [
       {
@@ -288,7 +299,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 正に',
     expected: 'まさに',
     tokens: [
       {
@@ -300,7 +310,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 先ず',
     expected: 'まず',
     tokens: [
       {
@@ -312,7 +321,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 寧ろ',
     expected: 'むしろ',
     tokens: [
       {
@@ -324,7 +332,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 勿論',
     expected: 'もちろん',
     tokens: [
       {
@@ -336,7 +343,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 漸く',
     expected: 'ようやく',
     tokens: [
       {
@@ -348,7 +354,6 @@ export const fukushi = [
     ],
   },
   {
-    message: '平仮名にひらいたほうが読みやすい副詞を使用しています: 宜しく',
     expected: 'よろしく',
     tokens: [
       {

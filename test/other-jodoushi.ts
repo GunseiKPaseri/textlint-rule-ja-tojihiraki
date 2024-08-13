@@ -1,18 +1,7 @@
-import TextLintTester from 'textlint-tester';
-import rule from '../src/index';
+import { type InvalidTestCases, runTestOpenClose } from './testutil';
 
-const tester = new TextLintTester();
-tester.run('その他 (助動詞)', rule, {
-  invalid: [
-    {
-      text: '三日とろろ美味しゅう御座いました',
-      output: '三日とろろ美味しゅうございました',
-      errors: [
-        {
-          message: '平仮名にひらいたほうが読みやすい助動詞を使用しています: 御座い',
-          range: [10, 11],
-        },
-      ],
-    },
-  ],
-});
+const invalidTestCases: InvalidTestCases = [
+  ['三日とろろ美味しゅう御座いました', '三日とろろ美味しゅうございました', [[[10, 11], '御座い(ゴザイ)']]],
+];
+
+runTestOpenClose('助動詞', 'jodoushi', [], invalidTestCases);
