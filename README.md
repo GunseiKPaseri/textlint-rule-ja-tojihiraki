@@ -1,5 +1,6 @@
 # textlint-rule-ja-tojihiraki
 
+[![npm version](https://badge.fury.io/js/textlint-rule-ja-tojihiraki.svg)](https://badge.fury.io/js/textlint-rule-ja-tojihiraki)
 [![Node.js CI](https://github.com/GunseiKPaseri/textlint-rule-ja-tojihiraki/actions/workflows/ci.yml/badge.svg)](https://github.com/GunseiKPaseri/textlint-rule-ja-tojihiraki/actions/workflows/ci.yml)
 [![textlint rule](https://img.shields.io/badge/textlint-fixable-green.svg?style=social)](https://textlint.github.io/) 
 
