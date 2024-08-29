@@ -13,6 +13,7 @@ import { meishi } from './dictionaries/meishi';
 import { rentaishi } from './dictionaries/rentaishi';
 import { setsuzokushi } from './dictionaries/setsuzokushi';
 import type { DictOpts, Dictionary, DictionaryInput, DictionaryInputs } from './type';
+import { hiraToKana } from './util';
 
 const defaultOpts: DictOpts = {
   ignore: [],
@@ -75,7 +76,7 @@ function shouldOpenDictionary(
     return [
       {
         tokens: openItem.tokens,
-        message: `ひらがなに開かれるべき${name}です: ${getSurfaceFrom({ tokens: openItem.tokens })}(${openItem.expected.join('|')})`,
+        message: `ひらがなに開かれるべき${name}です: ${getSurfaceFrom({ tokens: openItem.tokens })}(${openItem.expected.map(hiraToKana).join('|')})`,
       },
     ];
   }
@@ -155,7 +156,7 @@ function shouldCloseDictionary(
   return [
     {
       ...closeItem,
-      message: `漢字に閉じるべき${name}です: ${closeItem.expected}(${reading})`,
+      message: `漢字に閉じるべき${name}です: ${closeItem.expected}${reading === '' ? '' : `(${reading})`}`,
     },
   ];
 }

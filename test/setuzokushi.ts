@@ -35,7 +35,7 @@ const invalidTestCases: InvalidTestCases = [
     'そのうえリベレーターにそっくりだ',
     [[[0, 1], 'その上(ソノウエ)']],
     'closeOnly',
-    false,
+    'both',
   ],
 ];
 

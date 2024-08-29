@@ -6,9 +6,9 @@ type InvalidTestCase =
   | [
       closedText: string,
       openText: string,
-      [range: [number, number], message: string, pos?: string][],
-      'closeOnly' | 'openOnly' | 'both',
-      unfix: boolean,
+      [range: [number, number], message: string, pos?: string, trueMessage?: string][],
+      testMode: 'none' | 'closeOnly' | 'openOnly' | 'both',
+      fixMode: 'none' | 'closeOnly' | 'openOnly' | 'both',
     ];
 export type InvalidTestCases = InvalidTestCase[];
 
@@ -23,10 +23,10 @@ export const runTestOpenClose = (
   tester.run(`${name}(ひらく)`, rule, {
     valid: validTestCases,
     invalid: invalidTestCases
-      .filter((opts) => opts[3] !== 'closeOnly')
-      .map(([closedText, openText, openErrors, _mode, unfix]) => ({
+      .filter((opts) => opts[3] === 'openOnly' || opts[3] === 'both')
+      .map(([closedText, openText, openErrors, _testMode, fixMode]) => ({
         text: closedText,
-        output: unfix ? closedText : openText,
+        output: fixMode === 'none' || fixMode === 'closeOnly' ? closedText : openText,
         errors: openErrors.map(([range, message, pos]) => ({
           message: `ひらがなに開かれるべき${pos ?? name}です: ${message}`,
           range,
@@ -50,12 +50,12 @@ export const runTestOpenClose = (
     {
       valid: validTestCases,
       invalid: invalidTestCases
-        .filter((opts) => opts[3] !== 'openOnly')
-        .map(([closedText, openText, closeErrors, _mode, unfix]) => ({
+        .filter((opts) => opts[3] === 'closeOnly' || opts[3] === 'both')
+        .map(([closedText, openText, closeErrors, _testMode, fixMode]) => ({
           text: openText,
-          output: unfix ? openText : closedText,
-          errors: closeErrors.map(([range, message, pos]) => ({
-            message: `漢字に閉じるべき${pos ?? name}です: ${message}`,
+          output: fixMode === 'none' || fixMode === 'openOnly' ? openText : closedText,
+          errors: closeErrors.map(([range, message, pos, trueMessage]) => ({
+            message: `漢字に閉じるべき${pos ?? name}です: ${trueMessage ?? message}`,
             range,
           })),
         })),

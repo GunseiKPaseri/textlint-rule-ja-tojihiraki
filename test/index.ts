@@ -17,7 +17,7 @@ const invalidTestCases: InvalidTestCases = [
       [[24, 25], '所(トコロ)', '形式名詞'],
     ],
     'openOnly',
-    false,
+    'both',
   ],
   [
     '丁度良かった。色々話を聞いて頂きたいと思って居た所でした。',
@@ -31,7 +31,7 @@ const invalidTestCases: InvalidTestCases = [
       [[30, 31], '所(トコロ)', '形式名詞'],
     ],
     'closeOnly',
-    false,
+    'both',
   ],
 ];
 
