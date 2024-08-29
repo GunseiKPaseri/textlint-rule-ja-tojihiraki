@@ -22,7 +22,13 @@ const invalidTestCases: InvalidTestCases = [
     'both',
     'closeOnly',
   ],
-  // ['機械を弄る', '機械をいじる', [[[0, 1], '弄る']]],
+  [
+    '機械を弄る',
+    '機械をいじる',
+    [[[3, 4], '弄る(イジル|イジクル|マサグル)', undefined, '弄る(イジル)']],
+    'both',
+    'closeOnly',
+  ],
 ];
 
 runTestOpenClose('動詞', 'doushi', [], invalidTestCases);

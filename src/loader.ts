@@ -28,6 +28,8 @@ type RuleOptionSet = {
 };
 
 function isRuleEnabled(yomi: string, nameLoma: string, oc: 'open' | 'close', ruleOptionSet: RuleOptionSet): boolean {
+  if (yomi.includes('|')) return !yomi.split('|').some((y) => !isRuleEnabled(y, nameLoma, oc, ruleOptionSet));
+
   const { ignore, forceClose, forceOpen } = ruleOptionSet;
   // decide by yomi
   if (ignore.has(yomi) || (oc === 'open' && forceClose.has(yomi)) || (oc === 'close' && forceOpen.has(yomi)))
@@ -73,10 +75,12 @@ function shouldOpenDictionary(
     return openItem.flatMap((item) => shouldOpenDictionary(name, nameLoma, ruleOptionSet, item));
   }
   if (openItem.warnOnly) {
+    const reading = openItem.expected.map(hiraToKana).join('|');
+    if (!isRuleEnabled(reading, nameLoma, 'open', ruleOptionSet)) return [];
     return [
       {
         tokens: openItem.tokens,
-        message: `ひらがなに開かれるべき${name}です: ${getSurfaceFrom({ tokens: openItem.tokens })}(${openItem.expected.map(hiraToKana).join('|')})`,
+        message: `ひらがなに開かれるべき${name}です: ${getSurfaceFrom({ tokens: openItem.tokens })}(${reading})`,
       },
     ];
   }

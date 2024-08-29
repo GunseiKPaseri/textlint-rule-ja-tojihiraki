@@ -165,3 +165,11 @@ tester.run(
     ],
   },
 );
+
+tester.run('ignore options (複数読み)', rule, {
+  valid: [
+    { text: '機械を弄る', options: { ignore: ['イジル'] }, description: '機械を弄る(イジル)' },
+    { text: '機械を弄る', options: { ignore: ['マサグル'] }, description: '機械を弄る(マサグル)' },
+    { text: '機械をいじる', options: { 'force-close': ['doushi'], ignore: ['イジル'] } },
+  ],
+});

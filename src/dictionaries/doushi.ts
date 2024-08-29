@@ -295,13 +295,50 @@ export const doushi: DictionaryInputs[] = [
   },
   // いじる
   {
-    expected: 'いじる',
-    tokens: [
+    open: {
+      warnOnly: true,
+      expected: ['いじる', 'いじくる', 'まさぐる'],
+      tokens: [
+        {
+          surface_form: '弄る',
+          pos: '動詞',
+          basic_form: '弄る',
+        },
+      ],
+    },
+    close: [
       {
-        surface_form: '弄る',
-        pos: '動詞',
-        basic_form: '弄る',
-        reading: 'イジル',
+        expected: '弄る',
+        tokens: [
+          {
+            surface_form: 'いじる',
+            pos: '動詞',
+            basic_form: 'いじる',
+            reading: 'イジル',
+          },
+        ],
+      },
+      {
+        expected: '弄る',
+        tokens: [
+          {
+            surface_form: 'いじくる',
+            pos: '動詞',
+            basic_form: 'いじくる',
+            reading: 'イジクル',
+          },
+        ],
+      },
+      {
+        expected: '弄る',
+        tokens: [
+          {
+            surface_form: 'まさぐる',
+            pos: '動詞',
+            basic_form: 'まさぐる',
+            reading: 'マサグル',
+          },
+        ],
       },
     ],
   },
