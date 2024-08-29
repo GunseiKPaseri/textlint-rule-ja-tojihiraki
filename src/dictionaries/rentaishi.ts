@@ -23,18 +23,17 @@ export const rentaishi: DictionaryInputs[] = [
       },
     ],
   },
-  // {
-  //   message: '平仮名にひらいたほうが読みやすい連体詞を使用しています: 所謂',
-  //   expected: 'いわゆる',
-  //   tokens: [
-  //     {
-  //       surface_form: '所謂',
-  //       basic_form: '所謂',
-  //       pos: '連体詞',
-  //       reading: 'イワユル',
-  //     },
-  //   ],
-  // },
+  {
+    expected: 'いわゆる',
+    tokens: [
+      {
+        surface_form: '所謂',
+        basic_form: '所謂',
+        pos: '連体詞',
+        reading: 'イワユル',
+      },
+    ],
+  },
   {
     open: {
       expected: 'この前',

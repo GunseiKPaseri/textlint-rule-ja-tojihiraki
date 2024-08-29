@@ -37,45 +37,42 @@ export const daimeishi: DictionaryInputs[] = [
       },
     ],
   },
-  // {
-  //   message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 此れ',
-  //   expected: 'これ',
-  //   tokens: [
-  //     {
-  //       surface_form: '此れ',
-  //       pos: '名詞',
-  //       pos_detail_1: '代名詞',
-  //       basic_form: '此れ',
-  //       reading: 'コレ',
-  //     },
-  //   ],
-  // },
-  // {
-  //   message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 其処',
-  //   expected: 'そこ',
-  //   tokens: [
-  //     {
-  //       surface_form: '其処',
-  //       pos: '名詞',
-  //       pos_detail_1: '代名詞',
-  //       basic_form: '其処',
-  //       reading: 'ソコ',
-  //     },
-  //   ],
-  // },
-  // {
-  //   message: '平仮名にひらいたほうが読みやすい代名詞を使用しています: 其れ',
-  //   expected: 'それ',
-  //   tokens: [
-  //     {
-  //       surface_form: '其れ',
-  //       pos: '名詞',
-  //       pos_detail_1: '代名詞',
-  //       basic_form: '其れ',
-  //       reading: 'ソレ',
-  //     },
-  //   ],
-  // },
+  {
+    expected: 'これ',
+    tokens: [
+      {
+        surface_form: '此れ',
+        pos: '名詞',
+        pos_detail_1: '代名詞',
+        basic_form: '此れ',
+        reading: 'コレ',
+      },
+    ],
+  },
+  {
+    expected: 'そこ',
+    tokens: [
+      {
+        surface_form: '其処',
+        pos: '名詞',
+        pos_detail_1: '代名詞',
+        basic_form: '其処',
+        reading: 'ソコ',
+      },
+    ],
+  },
+  {
+    expected: 'それ',
+    tokens: [
+      {
+        surface_form: '其れ',
+        pos: '名詞',
+        pos_detail_1: '代名詞',
+        basic_form: '其れ',
+        reading: 'ソレ',
+      },
+    ],
+  },
   {
     expected: 'どこ',
     tokens: [

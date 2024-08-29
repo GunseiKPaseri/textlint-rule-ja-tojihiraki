@@ -1,6 +1,6 @@
 import type { DictionaryInputs } from '../type';
 
-export const otherKeiyoushi: DictionaryInputs[] = [
+export const keiyoushi: DictionaryInputs[] = [
   {
     expected: 'ありがたい',
     tokens: [

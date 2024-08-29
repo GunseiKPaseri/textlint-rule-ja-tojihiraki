@@ -1,6 +1,6 @@
 import type { DictionaryInputs } from '../type';
 
-export const otherMeishi: DictionaryInputs[] = [
+export const meishi: DictionaryInputs[] = [
   {
     expected: 'すべて',
     tokens: [

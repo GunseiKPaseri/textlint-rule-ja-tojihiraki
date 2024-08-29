@@ -19,15 +19,18 @@ const report: TextlintRuleModule = (context, options) => {
 
       return matchAll(text).then((results) => {
         for (const result of results) {
-          if (result.expected) {
-            report(
-              node,
-              new RuleError(result.message, {
-                index: result.index,
-                fix: fixer.replaceTextRange(result.range, result.expected),
-              }),
-            );
-          }
+          report(
+            node,
+            new RuleError(
+              result.message,
+              result.expected
+                ? {
+                    index: result.index,
+                    fix: fixer.replaceTextRange(result.range, result.expected),
+                  }
+                : { index: result.index },
+            ),
+          );
         }
       });
     },

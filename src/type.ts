@@ -2,12 +2,25 @@ import type { ExpectedTokenWithCapture } from 'morpheme-match-textlint';
 
 export type Dictionary = {
   message: string;
-  expected: string;
+  expected?: string;
   tokens: ExpectedTokenWithCapture[];
 };
 
-export type DictionaryInput = Omit<Dictionary, 'message'>;
-export type DictionaryInputs = DictionaryInput | { open?: DictionaryInput; close?: DictionaryInput };
+export type DictionaryInput =
+  | {
+      warnOnly?: false;
+      expected: string;
+      tokens: ExpectedTokenWithCapture[];
+    }
+  | {
+      warnOnly: true;
+      expected: string[];
+      tokens: ExpectedTokenWithCapture[];
+    };
+export type DictionaryInputs =
+  | DictionaryInput
+  | { open?: DictionaryInput | DictionaryInput[]; close: DictionaryInput | DictionaryInput[] }
+  | { open: DictionaryInput | DictionaryInput[] };
 
 export interface DictOpts {
   ignore: string[];

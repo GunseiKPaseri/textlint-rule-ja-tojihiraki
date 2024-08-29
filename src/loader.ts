@@ -1,18 +1,18 @@
 import { daimeishi } from './dictionaries/daimeishi';
+import { doushi } from './dictionaries/doushi';
 import { fukugoukakujoshi } from './dictionaries/fukugoukakujoshi';
 import { fukujoshi } from './dictionaries/fukujoshi';
 import { fukushi } from './dictionaries/fukushi';
 import { hojodoushi } from './dictionaries/hojodoushi';
 import { hojokeiyoushi } from './dictionaries/hojokeiyoushi';
+import { jodoushi } from './dictionaries/jodoushi';
+import { kandoushi } from './dictionaries/kandoushi';
 import { keishikimeishi } from './dictionaries/keishikimeishi';
-import { otherDoushi } from './dictionaries/other-doushi';
-import { otherJodoushi } from './dictionaries/other-jodoushi';
-import { otherKandoushi } from './dictionaries/other-kandoushi';
-import { otherKeiyoushi } from './dictionaries/other-keiyoushi';
-import { otherMeishi } from './dictionaries/other-meishi';
+import { keiyoushi } from './dictionaries/keiyoushi';
+import { meishi } from './dictionaries/meishi';
 import { rentaishi } from './dictionaries/rentaishi';
 import { setsuzokushi } from './dictionaries/setsuzokushi';
-import type { DictOpts, Dictionary, DictionaryInputs } from './type';
+import type { DictOpts, Dictionary, DictionaryInput, DictionaryInputs } from './type';
 
 const defaultOpts: DictOpts = {
   ignore: [],
@@ -66,23 +66,33 @@ function shouldOpenDictionary(
     ignore: Set<string>;
   },
   openCloseItem: DictionaryInputs,
-): Dictionary | undefined {
-  const openItem = !('expected' in openCloseItem) ? openCloseItem.open : openCloseItem;
-  if (typeof openItem === 'undefined') return undefined;
-  const expectedText = openItem.expected ?? '';
-  const shouldOpenedText = getSurfaceFrom(openItem);
+): Dictionary[] {
+  const openItem = 'open' in openCloseItem ? openCloseItem.open ?? [] : 'close' in openCloseItem ? [] : openCloseItem;
+  if (Array.isArray(openItem)) {
+    return openItem.flatMap((item) => shouldOpenDictionary(name, nameLoma, ruleOptionSet, item));
+  }
+  if (openItem.warnOnly) {
+    return [
+      {
+        tokens: openItem.tokens,
+        message: `ひらがなに開かれるべき${name}です: ${getSurfaceFrom({ tokens: openItem.tokens })}(${openItem.expected.join('|')})`,
+      },
+    ];
+  }
   const reading = getReading(openItem);
-  if (expectedText === '') return undefined;
-  if (!isRuleEnabled(reading, nameLoma, 'open', ruleOptionSet)) return undefined;
-  return {
-    ...openItem,
-    message: `ひらがなに開かれるべき${name}です: ${shouldOpenedText}(${reading})`,
-  };
+  if (!isRuleEnabled(reading, nameLoma, 'open', ruleOptionSet)) return [];
+  const shouldOpenedText = getSurfaceFrom(openItem);
+  return [
+    {
+      ...openItem,
+      message: `ひらがなに開かれるべき${name}です: ${shouldOpenedText}(${reading})`,
+    },
+  ];
 }
 
-function convertOpenToClose(openItem: Omit<Dictionary, 'message'>): Omit<Dictionary, 'message'> {
+function convertOpenToClose(openItem: DictionaryInput): DictionaryInput {
   return {
-    expected: getSurfaceFrom(openItem),
+    expected: getSurfaceFrom({ tokens: openItem.tokens }),
     tokens: [
       {
         ...openItem.tokens[0],
@@ -93,7 +103,14 @@ function convertOpenToClose(openItem: Omit<Dictionary, 'message'>): Omit<Diction
   };
 }
 
-function shouldCloseDictionary(
+function convertOpenToCloses(openItem: DictionaryInput | DictionaryInput[]): DictionaryInput[] {
+  if (Array.isArray(openItem)) {
+    return openItem.map(convertOpenToClose);
+  }
+  return [convertOpenToClose(openItem)];
+}
+
+function shouldCloseDictionaries(
   name: string,
   nameLoma: string,
   ruleOptionSet: {
@@ -102,17 +119,45 @@ function shouldCloseDictionary(
     ignore: Set<string>;
   },
   openCloseItem: DictionaryInputs,
-): Dictionary | undefined {
-  const closeItem = !('expected' in openCloseItem) ? openCloseItem.close : convertOpenToClose(openCloseItem);
-  if (typeof closeItem === 'undefined') return undefined;
-  const expectedText = closeItem.expected ?? '';
-  //const shouldCloseText = getSurfaceFrom(closeItem);
-  const reading = getReading(closeItem);
-  if (!isRuleEnabled(reading, nameLoma, 'close', ruleOptionSet)) return undefined;
-  return {
-    ...closeItem,
-    message: `漢字に閉じるべき${name}です: ${expectedText}(${reading})`,
-  };
+) {
+  const closeItem =
+    'close' in openCloseItem
+      ? openCloseItem.close ?? []
+      : 'open' in openCloseItem
+        ? []
+        : convertOpenToCloses(openCloseItem);
+  if (Array.isArray(closeItem)) {
+    return closeItem.flatMap((item) => shouldCloseDictionary(name, nameLoma, ruleOptionSet, item));
+  }
+  return shouldCloseDictionary(name, nameLoma, ruleOptionSet, closeItem);
+}
+
+function shouldCloseDictionary(
+  name: string,
+  nameLoma: string,
+  ruleOptionSet: {
+    forceClose: Set<string>;
+    forceOpen: Set<string>;
+    ignore: Set<string>;
+  },
+  closeItem: DictionaryInput,
+): Dictionary[] {
+  const reading = getReading({ tokens: closeItem.tokens });
+  if (!isRuleEnabled(reading, nameLoma, 'close', ruleOptionSet)) return [];
+  if (closeItem.warnOnly) {
+    return [
+      {
+        tokens: closeItem.tokens,
+        message: `漢字に閉じるべき${name}です: ${closeItem.expected.map((x) => `${x}(${reading})`).join('|')}`,
+      },
+    ];
+  }
+  return [
+    {
+      ...closeItem,
+      message: `漢字に閉じるべき${name}です: ${closeItem.expected}(${reading})`,
+    },
+  ];
 }
 
 export class DictionaryLoader {
@@ -141,24 +186,24 @@ export class DictionaryLoader {
       ['補助動詞', 'hojodoushi', hojodoushi],
       ['補助形容詞', 'hojokeiyoushi', hojokeiyoushi],
       ['形式名詞', 'keishikimeishi', keishikimeishi],
-      ['動詞', 'doushi', otherDoushi],
-      ['助動詞', 'jodoushi', otherJodoushi],
-      ['感動詞', 'kandoushi', otherKandoushi],
-      ['形容詞', 'keiyoushi', otherKeiyoushi],
-      ['名詞', 'meishi', otherMeishi],
+      ['動詞', 'doushi', doushi],
+      ['助動詞', 'jodoushi', jodoushi],
+      ['感動詞', 'kandoushi', kandoushi],
+      ['形容詞', 'keiyoushi', keiyoushi],
+      ['名詞', 'meishi', meishi],
       ['連体詞', 'rentaishi', rentaishi],
       ['接続詞', 'setuzokushi', setsuzokushi],
     ];
 
     for (const [name, nameLoma, items] of targetList) {
       for (const item of items) {
-        const closeRule = shouldCloseDictionary(name, nameLoma, { forceClose, forceOpen, ignore }, item);
+        const closeRule = shouldCloseDictionaries(name, nameLoma, { forceClose, forceOpen, ignore }, item);
         const openRule = shouldOpenDictionary(name, nameLoma, { forceClose, forceOpen, ignore }, item);
         if (closeRule) {
-          dict = [...dict, closeRule];
+          dict = [...dict, ...closeRule];
         }
         if (openRule) {
-          dict = [...dict, openRule];
+          dict = [...dict, ...openRule];
         }
       }
     }

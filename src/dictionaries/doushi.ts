@@ -1,6 +1,6 @@
 import type { DictionaryInputs } from '../type';
 
-export const otherDoushi: DictionaryInputs[] = [
+export const doushi: DictionaryInputs[] = [
   {
     open: {
       expected: 'わかる',
@@ -241,26 +241,50 @@ export const otherDoushi: DictionaryInputs[] = [
       ],
     },
   },
-  // {
-  //   expected: "拘り",
-  //   tokens: [
-  //     {
-  //       surface_form: "拘り",
-  //       pos: "動詞",
-  //       basic_form: "拘る",
-  //       reading: "コダワリ",
-  //     },
-  //   ],
-  // },
-  // {
-  //   expected: "弄る",
-  //   tokens: [
-  //     {
-  //       surface_form: "弄る",
-  //       pos: "動詞",
-  //       basic_form: "弄る",
-  //       reading: "イジル",
-  //     },
-  //   ],
-  // },
+  {
+    open: {
+      warnOnly: true,
+      expected: ['こだわり', 'かかわり'],
+      tokens: [
+        {
+          surface_form: '拘り',
+          pos: '動詞',
+          basic_form: '拘る',
+        },
+      ],
+    },
+    close: [
+      {
+        expected: '拘り',
+        tokens: [
+          {
+            surface_form: 'こだわり',
+            pos: '動詞',
+            basic_form: 'こだわる',
+          },
+        ],
+      },
+      {
+        expected: '拘り',
+        tokens: [
+          {
+            surface_form: 'かかわり',
+            pos: '動詞',
+            basic_form: 'かかわる',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    expected: 'いじる',
+    tokens: [
+      {
+        surface_form: '弄る',
+        pos: '動詞',
+        basic_form: '弄る',
+        reading: 'イジル',
+      },
+    ],
+  },
 ];

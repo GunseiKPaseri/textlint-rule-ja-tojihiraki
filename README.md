@@ -51,7 +51,7 @@ textlint --rule ja-tojihiraki README.md
 {
   "rules": {
     "ja-tojihiraki": {
-      ignore: [ "イタダキ" ], // 無視する値
+      "ignore": [ "イタダキ" ], // 無視する値
       "force-close": [ "doushi", "jodoushi", "kandoushi", "meishi", "keiyoushi", "meishi" ], // 閉じるべき値
     },
   }

@@ -2,8 +2,14 @@ import TextLintTester from 'textlint-tester';
 import rule from '../src/index';
 
 type InvalidTestCase =
-  | [string, string, [[number, number], string, string?][]]
-  | [string, string, [[number, number], string, string?][], 'closeOnly' | 'openOnly'];
+  | [closedText: string, openText: string, [range: [number, number], message: string, pos?: string][]]
+  | [
+      closedText: string,
+      openText: string,
+      [range: [number, number], message: string, pos?: string][],
+      'closeOnly' | 'openOnly' | 'both',
+      unfix: boolean,
+    ];
 export type InvalidTestCases = InvalidTestCase[];
 
 const tester = new TextLintTester();
@@ -18,9 +24,9 @@ export const runTestOpenClose = (
     valid: validTestCases,
     invalid: invalidTestCases
       .filter((opts) => opts[3] !== 'closeOnly')
-      .map(([text, output, openErrors]) => ({
-        text,
-        output,
+      .map(([closedText, openText, openErrors, _mode, unfix]) => ({
+        text: closedText,
+        output: unfix ? closedText : openText,
         errors: openErrors.map(([range, message, pos]) => ({
           message: `ひらがなに開かれるべき${pos ?? name}です: ${message}`,
           range,
@@ -45,9 +51,9 @@ export const runTestOpenClose = (
       valid: validTestCases,
       invalid: invalidTestCases
         .filter((opts) => opts[3] !== 'openOnly')
-        .map(([text, output, closeErrors]) => ({
-          text: output,
-          output: text,
+        .map(([closedText, openText, closeErrors, _mode, unfix]) => ({
+          text: openText,
+          output: unfix ? openText : closedText,
           errors: closeErrors.map(([range, message, pos]) => ({
             message: `漢字に閉じるべき${pos ?? name}です: ${message}`,
             range,

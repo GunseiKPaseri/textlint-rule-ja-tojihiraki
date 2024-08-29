@@ -1,6 +1,6 @@
 import type { DictionaryInputs } from '../type';
 
-export const otherJodoushi: DictionaryInputs[] = [
+export const jodoushi: DictionaryInputs[] = [
   {
     open: {
       expected: 'ござい',
