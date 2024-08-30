@@ -1,9 +1,10 @@
+import type { ExpectedTokenWithCapture } from 'morpheme-match-textlint';
 import type { DictionaryInputs, JOYOGAI } from '../type.ts';
 import { hiraToKana } from '../util.ts';
 
 const table5: { [key: string]: readonly string[] } = {
-  く: ['か', 'き', 'く', 'け', 'こ'],
-  ぐ: ['が', 'ぎ', 'ぐ', 'げ', 'ご'],
+  く: ['か', 'き', 'く', 'け', 'こ', 'い'],
+  ぐ: ['が', 'ぎ', 'ぐ', 'げ', 'ご', 'い'],
   す: ['さ', 'し', 'す', 'せ', 'そ'],
   つ: ['た', 'ち', 'つ', 'て', 'と', 'っ'],
   ぬ: ['な', 'に', 'ぬ', 'ね', 'の', 'ん'],
@@ -48,7 +49,8 @@ const tablekh = ['こ', 'き', 'く', 'くる', 'くれ', 'こい'] as const;
 
 type DoushiHenkan = '5' | '上1' | '下1' | 'サ変' | 'カ変';
 
-const getDoushiHenkanTable = (gobi: string, henkan: DoushiHenkan) => {
+const getDoushiHenkanTable = (gokanHira: string | string[], gobi: string, henkan: DoushiHenkan) => {
+  if (gokanHira === 'い' && gobi === 'く') return ['か', 'き', 'く', 'け', 'こ', 'っ'];
   switch (henkan) {
     case '5':
       return table5[gobi] ?? [];
@@ -70,8 +72,9 @@ export const generateDoushiHenkaku = (
     | { type: 'doji'; gokan: { str: string; joyogai?: JOYOGAI }; gokanHira: string[] },
   gobi: string,
   henkan: DoushiHenkan,
+  token: ExpectedTokenWithCapture = { pos: '動詞' },
 ): DictionaryInputs[] => {
-  const table = getDoushiHenkanTable(gobi, henkan);
+  const table = getDoushiHenkanTable(gokanset.gokanHira, gobi, henkan);
   return table.map((henka) => {
     switch (gokanset.type) {
       case 'doon': {
@@ -81,8 +84,8 @@ export const generateDoushiHenkaku = (
             expected: `${gokanHira}${henka}`,
             tokens: [
               {
+                ...token,
                 surface_form: `${gokan.str}${henka}`,
-                pos: '動詞',
                 basic_form: `${gokan.str}${gobi}`,
                 reading: hiraToKana(`${gokanHira}${henka}`),
               },
@@ -94,8 +97,8 @@ export const generateDoushiHenkaku = (
             expected: gokans.map((gokan) => `${gokan.str}${henka}`),
             tokens: [
               {
+                ...token,
                 surface_form: `${gokanHira}${henka}`,
-                pos: '動詞',
                 basic_form: `${gokanHira}${gobi}`,
                 //reading: hiraToKana(`${gokanHira}${henka}`),
               },
@@ -113,8 +116,8 @@ export const generateDoushiHenkaku = (
                 expected: gokanHiras.map((gokanHira) => `${gokanHira}${henka}`),
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokan.str}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokan.str}${gobi}`,
                   },
                 ],
@@ -125,8 +128,8 @@ export const generateDoushiHenkaku = (
                 expected: gokanHiras.map((gokanHira) => `${gokanHira}${henka}`),
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokan.str}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokan.str}${gobi}`,
                   },
                 ],
@@ -137,8 +140,8 @@ export const generateDoushiHenkaku = (
                   expected: `${gokan.str}${henka}`,
                   tokens: [
                     {
+                      ...token,
                       surface_form: `${gokanHira}${henka}`,
-                      pos: '動詞',
                       basic_form: `${gokanHira}${gobi}`,
                       reading: hiraToKana(`${gokanHira}${henka}`),
                     },
@@ -149,8 +152,8 @@ export const generateDoushiHenkaku = (
                   expected: `${gokan.str}${henka}`,
                   tokens: [
                     {
+                      ...token,
                       surface_form: `${gokanHira}${henka}`,
-                      pos: '動詞',
                       basic_form: `${gokanHira}${gobi}`,
                       reading: hiraToKana(`${gokanHira}${henka}`),
                     },
@@ -167,8 +170,8 @@ export const generateDoushiHenkaku = (
                 expected: `${gokanHira}${henka}`,
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokan.str}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokan.str}${gobi}`,
                     reading: hiraToKana(`${gokanHira}${henka}`),
                   },
@@ -179,8 +182,8 @@ export const generateDoushiHenkaku = (
                 expected: `${gokanHira}${henka}`,
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokan.str}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokan.str}${gobi}`,
                     reading: hiraToKana(`${gokanHira}${henka}`),
                   },
@@ -191,8 +194,8 @@ export const generateDoushiHenkaku = (
                 expected: `${gokan.str}${henka}`,
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokanHira}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokanHira}${gobi}`,
                     reading: hiraToKana(`${gokanHira}${henka}`),
                   },
@@ -203,8 +206,8 @@ export const generateDoushiHenkaku = (
                 expected: `${gokan.str}${henka}`,
                 tokens: [
                   {
+                    ...token,
                     surface_form: `${gokanHira}${henka}`,
-                    pos: '動詞',
                     basic_form: `${gokanHira}${gobi}`,
                     reading: hiraToKana(`${gokanHira}${henka}`),
                   },
