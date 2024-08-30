@@ -23,7 +23,7 @@ export const runTestOpenClose = (
   tester.run(`${name}(ひらく)`, rule, {
     valid: validTestCases,
     invalid: invalidTestCases
-      .filter((opts) => opts[3] === 'openOnly' || opts[3] === 'both')
+      .filter((opts) => opts[3] === undefined || opts[3] === 'openOnly' || opts[3] === 'both')
       .map(([closedText, openText, openErrors, _testMode, fixMode]) => ({
         text: closedText,
         output: fixMode === 'none' || fixMode === 'closeOnly' ? closedText : openText,
@@ -50,7 +50,7 @@ export const runTestOpenClose = (
     {
       valid: validTestCases,
       invalid: invalidTestCases
-        .filter((opts) => opts[3] === 'closeOnly' || opts[3] === 'both')
+        .filter((opts) => opts[3] === undefined || opts[3] === 'closeOnly' || opts[3] === 'both')
         .map(([closedText, openText, closeErrors, _testMode, fixMode]) => ({
           text: openText,
           output: fixMode === 'none' || fixMode === 'openOnly' ? openText : closedText,

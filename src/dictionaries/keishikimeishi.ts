@@ -48,6 +48,7 @@ export const keishikimeishi: DictionaryInputs[] = [
         reading: 'ゴト',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'たび',
@@ -72,6 +73,7 @@ export const keishikimeishi: DictionaryInputs[] = [
         reading: 'タメ',
       },
     ],
+    joyogai: 'hyogai',
   },
   // {
   //   expected: 'とおり',
@@ -132,6 +134,7 @@ export const keishikimeishi: DictionaryInputs[] = [
         reading: 'ハズ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'ほう',
@@ -156,6 +159,7 @@ export const keishikimeishi: DictionaryInputs[] = [
         reading: 'ホカ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'もの',

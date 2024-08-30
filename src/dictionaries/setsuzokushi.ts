@@ -11,6 +11,7 @@ export const setsuzokushi: DictionaryInputs[] = [
         reading: 'アルイハ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'および',
@@ -68,6 +69,7 @@ export const setsuzokushi: DictionaryInputs[] = [
         reading: 'スナワチ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'ただし',
@@ -90,6 +92,7 @@ export const setsuzokushi: DictionaryInputs[] = [
         reading: 'チナミニ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'なお',
@@ -101,6 +104,7 @@ export const setsuzokushi: DictionaryInputs[] = [
         reading: 'ナオ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'ならびに',
@@ -145,6 +149,7 @@ export const setsuzokushi: DictionaryInputs[] = [
         reading: 'モシクハ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     open: {

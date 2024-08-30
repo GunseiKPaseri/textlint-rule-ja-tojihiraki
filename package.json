@@ -1,10 +1,13 @@
 {
   "version": "0.0.2",
+  "type": "module",
   "keywords": ["textlintrule", "japanese"],
   "main": "lib/index.js",
   "files": ["lib/", "src/"],
   "scripts": {
-    "test": "textlint-scripts test",
+    "test": "npm run nodetest && npm run test:script",
+    "test:node": "node --experimental-strip-types --experimental-detect-module --no-warnings=ExperimentalWarning --test src/**/*.test.ts",
+    "test:script": "textlint-scripts test",
     "build": "textlint-scripts build",
     "prepublish": "npm run --if-present build",
     "watch": "textlint-scripts build --watch",

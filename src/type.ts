@@ -6,16 +6,20 @@ export type Dictionary = {
   tokens: ExpectedTokenWithCapture[];
 };
 
+export type JOYOGAI = 'hyogai' | 'joyogai';
+
 export type DictionaryInput =
   | {
       warnOnly?: false;
       expected: string;
       tokens: ExpectedTokenWithCapture[];
+      joyogai?: JOYOGAI;
     }
   | {
       warnOnly: true;
       expected: string[];
       tokens: ExpectedTokenWithCapture[];
+      joyogai?: JOYOGAI;
     };
 export type DictionaryInputs =
   | DictionaryInput

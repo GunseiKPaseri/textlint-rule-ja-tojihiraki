@@ -56,7 +56,12 @@ function getSurfaceFrom(dic: Omit<Dictionary, 'message'>): string {
 }
 function getReading(dic: Omit<Dictionary, 'message'>): string {
   return dic.tokens
-    .map((token) => (Array.isArray(token.reading) ? token.reading.join('') : token.reading ?? ''))
+    .map((token) =>
+      Array.isArray(token.reading)
+        ? token.reading.join('')
+        : token.reading ??
+          hiraToKana(Array.isArray(token.surface_form) ? token.surface_form.join('') : token.surface_form ?? ''),
+    )
     .join('');
 }
 

@@ -2,6 +2,7 @@ import type { DictionaryInputs } from '../type';
 
 export const hojokeiyoushi: DictionaryInputs[] = [
   {
+    // 欲しい
     open: {
       expected: 'ほしい',
       tokens: [

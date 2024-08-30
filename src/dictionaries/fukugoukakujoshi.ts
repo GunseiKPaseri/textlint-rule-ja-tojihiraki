@@ -39,4 +39,17 @@ export const fukugoukakujoshi: DictionaryInputs[] = [
       ],
     },
   },
+  {
+    expected: 'をもって',
+    tokens: [
+      {
+        surface_form: 'を以て',
+        pos: '助詞',
+        pos_detail_1: '格助詞',
+        basic_form: 'を以て',
+        reading: 'ヲモッテ',
+      },
+    ],
+    joyogai: 'hyogai',
+  },
 ];

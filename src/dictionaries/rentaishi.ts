@@ -33,6 +33,7 @@ export const rentaishi: DictionaryInputs[] = [
         reading: 'イワユル',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     open: {
@@ -45,6 +46,7 @@ export const rentaishi: DictionaryInputs[] = [
           reading: 'コノマエ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '此の前',
@@ -63,6 +65,7 @@ export const rentaishi: DictionaryInputs[] = [
           reading: 'マエ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -75,5 +78,6 @@ export const rentaishi: DictionaryInputs[] = [
         reading: 'ソノ',
       },
     ],
+    joyogai: 'joyogai',
   },
 ];

@@ -1,6 +1,7 @@
 import type { DictionaryInputs } from '../type';
 
 export const hojodoushi: DictionaryInputs[] = [
+  // 上げる
   {
     open: {
       expected: 'あげ',
@@ -131,6 +132,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 有る
   {
     open: {
       expected: 'あり',
@@ -209,6 +211,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 行く
   {
     open: {
       expected: 'いか',
@@ -365,6 +368,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 頂く
   {
     open: {
       expected: 'いただい',
@@ -521,6 +525,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 居る
   {
     open: {
       expected: 'い',
@@ -641,6 +646,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 置く
   {
     open: {
       expected: 'おい',
@@ -797,6 +803,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 下さい
   {
     open: {
       expected: 'ください',
@@ -953,6 +960,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 来る
   {
     open: {
       expected: 'き',
@@ -1109,6 +1117,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 見る
   {
     open: {
       expected: 'み',
@@ -1239,6 +1248,7 @@ export const hojodoushi: DictionaryInputs[] = [
       ],
     },
   },
+  // 貰う
   {
     open: {
       expected: 'もらい',
@@ -1251,6 +1261,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モライ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '貰い',
@@ -1263,6 +1274,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モライ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -1277,6 +1289,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラウ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '貰う',
@@ -1289,6 +1302,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラウ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -1303,6 +1317,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラエ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '貰え',
@@ -1315,6 +1330,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラエ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -1329,6 +1345,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラオ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '貰お',
@@ -1341,6 +1358,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラオ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -1355,6 +1373,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラッ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: 'もらっ',
@@ -1367,6 +1386,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラッ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
   {
@@ -1381,6 +1401,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラワ',
         },
       ],
+      joyogai: 'joyogai',
     },
     close: {
       expected: '貰わ',
@@ -1393,6 +1414,7 @@ export const hojodoushi: DictionaryInputs[] = [
           reading: 'モラワ',
         },
       ],
+      joyogai: 'joyogai',
     },
   },
 ];

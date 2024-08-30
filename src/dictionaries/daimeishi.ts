@@ -24,6 +24,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'イズレ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'ここ',
@@ -36,6 +37,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'ココ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'これ',
@@ -48,6 +50,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'コレ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'そこ',
@@ -60,6 +63,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'ソコ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'それ',
@@ -72,6 +76,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'ソレ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'どこ',
@@ -84,6 +89,7 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'ドコ',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'どなた',
@@ -96,5 +102,6 @@ export const daimeishi: DictionaryInputs[] = [
         reading: 'ドナタ',
       },
     ],
+    joyogai: 'hyogai',
   },
 ];

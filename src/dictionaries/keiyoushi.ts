@@ -79,6 +79,7 @@ export const keiyoushi: DictionaryInputs[] = [
         reading: 'モッタイナイ',
       },
     ],
+    joyogai: 'joyogai',
   },
   {
     expected: 'よい',

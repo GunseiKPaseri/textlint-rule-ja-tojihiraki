@@ -24,6 +24,7 @@ export const fukujoshi: DictionaryInputs[] = [
         reading: 'ナド',
       },
     ],
+    joyogai: 'hyogai',
   },
   {
     expected: 'ほど',
@@ -48,5 +49,6 @@ export const fukujoshi: DictionaryInputs[] = [
         reading: 'マデ',
       },
     ],
+    joyogai: 'joyogai',
   },
 ];

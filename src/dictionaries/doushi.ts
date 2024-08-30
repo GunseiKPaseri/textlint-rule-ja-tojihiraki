@@ -1,128 +1,32 @@
 import type { DictionaryInputs } from '../type';
+import { generateDoushiHenkaku } from './util';
 
 export const doushi: DictionaryInputs[] = [
-  // 分かる
+  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '分か' }, gokanHira: 'わか' }, 'る', '5'),
   {
     open: {
-      expected: 'わかる',
+      expected: 'でき',
       tokens: [
         {
-          surface_form: '分かる',
+          surface_form: '出来',
           pos: '動詞',
-          basic_form: '分かる',
-          reading: 'ワカル',
+          basic_form: '出来る',
+          reading: 'デキ',
         },
       ],
     },
     close: {
-      expected: '分かる',
+      expected: '出来',
       tokens: [
         {
-          surface_form: 'わかる',
+          surface_form: 'でき',
           pos: '動詞',
-          basic_form: 'わかる',
-          reading: 'ワカル',
+          basic_form: 'できる',
+          reading: 'デキ',
         },
       ],
     },
   },
-  {
-    open: {
-      expected: 'わから',
-      tokens: [
-        {
-          surface_form: '分から',
-          pos: '動詞',
-          basic_form: '分かる',
-          reading: 'ワカラ',
-        },
-      ],
-    },
-    close: {
-      expected: '分から',
-      tokens: [
-        {
-          surface_form: 'わから',
-          pos: '動詞',
-          basic_form: 'わかる',
-          reading: 'ワカラ',
-        },
-      ],
-    },
-  },
-  {
-    open: {
-      expected: 'わかり',
-      tokens: [
-        {
-          surface_form: '分かり',
-          pos: '動詞',
-          basic_form: '分かる',
-          reading: 'ワカリ',
-        },
-      ],
-    },
-    close: {
-      expected: '分かり',
-      tokens: [
-        {
-          surface_form: 'わかり',
-          pos: '動詞',
-          basic_form: 'わかる',
-          reading: 'ワカリ',
-        },
-      ],
-    },
-  },
-  {
-    open: {
-      expected: 'わかろ',
-      tokens: [
-        {
-          surface_form: '分かろ',
-          pos: '動詞',
-          basic_form: '分かる',
-          reading: 'ワカロ',
-        },
-      ],
-    },
-    close: {
-      expected: '分かろ',
-      tokens: [
-        {
-          surface_form: 'わかろ',
-          pos: '動詞',
-          basic_form: 'わかる',
-          reading: 'ワカロ',
-        },
-      ],
-    },
-  },
-  {
-    open: {
-      expected: 'わかっ',
-      tokens: [
-        {
-          surface_form: '分かっ',
-          pos: '動詞',
-          basic_form: '分かる',
-          reading: 'ワカッ',
-        },
-      ],
-    },
-    close: {
-      expected: '分かっ',
-      tokens: [
-        {
-          surface_form: 'わかっ',
-          pos: '動詞',
-          basic_form: 'わかる',
-          reading: 'ワカッ',
-        },
-      ],
-    },
-  },
-  // できる
   {
     open: {
       expected: 'できる',
@@ -149,10 +53,34 @@ export const doushi: DictionaryInputs[] = [
   },
   {
     open: {
-      expected: 'でき',
+      expected: 'できれ',
       tokens: [
         {
-          surface_form: '出来',
+          surface_form: '出来れ',
+          pos: '動詞',
+          basic_form: '出来る',
+          reading: 'デキレ',
+        },
+      ],
+    },
+    close: {
+      expected: '出来れ',
+      tokens: [
+        {
+          surface_form: 'できれ',
+          pos: '動詞',
+          basic_form: 'できる',
+          reading: 'デキレ',
+        },
+      ],
+    },
+  },
+  {
+    open: {
+      expected: 'できろ',
+      tokens: [
+        {
+          surface_form: '出来ろ',
           pos: '動詞',
           basic_form: '出来る',
           reading: 'デキ',
@@ -160,10 +88,10 @@ export const doushi: DictionaryInputs[] = [
       ],
     },
     close: {
-      expected: '出来',
+      expected: '出来ろ',
       tokens: [
         {
-          surface_form: 'でき',
+          surface_form: 'できろ',
           pos: '動詞',
           basic_form: 'できる',
           reading: 'デキ',
@@ -171,175 +99,61 @@ export const doushi: DictionaryInputs[] = [
       ],
     },
   },
-  // まとめる
   {
     open: {
-      expected: 'まとめる',
+      expected: 'できよ',
       tokens: [
         {
-          surface_form: '纏める',
+          surface_form: '出来よ',
           pos: '動詞',
-          basic_form: '纏める',
-          reading: 'マトメル',
+          basic_form: '出来る',
+          reading: 'デキヨ',
         },
       ],
     },
     close: {
-      expected: '纏める',
+      expected: '出来よ',
       tokens: [
         {
-          surface_form: 'まとめる',
+          surface_form: 'できよ',
           pos: '動詞',
-          basic_form: 'まとめる',
-          reading: 'マトメル',
+          basic_form: 'できる',
+          reading: 'デキヨ',
         },
       ],
     },
   },
-  {
-    open: {
-      expected: 'まとめ',
-      tokens: [
-        {
-          surface_form: '纏め',
-          pos: '動詞',
-          basic_form: '纏める',
-          reading: 'マトメ',
-        },
+  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '纏', joyogai: 'hyogai' }, gokanHira: 'まと' }, 'める', '下1'),
+  ...generateDoushiHenkaku({ type: 'doji', gokan: { str: '弄' }, gokanHira: ['いじ', 'いじく', 'まさぐ'] }, 'る', '5'),
+  ...generateDoushiHenkaku(
+    { type: 'doji', gokan: { str: '拘', joyogai: 'hyogai' }, gokanHira: ['こだわ', 'かかわ'] },
+    'る',
+    '5',
+  ),
+  ...generateDoushiHenkaku(
+    {
+      type: 'doon',
+      gokan: [
+        { str: '依', joyogai: 'hyogai' },
+        { str: '拠', joyogai: 'hyogai' },
       ],
+      gokanHira: 'よ',
     },
-    close: {
-      expected: '纏め',
-      tokens: [
-        {
-          surface_form: 'まとめ',
-          pos: '動詞',
-          basic_form: 'まとめる',
-          reading: 'マトメ',
-        },
+    'る',
+    '5',
+  ),
+  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '為', joyogai: 'hyogai' }, gokanHira: 'な' }, 'す', '5'),
+  ...generateDoushiHenkaku(
+    {
+      type: 'doon',
+      gokan: [
+        { str: '準', joyogai: 'hyogai' },
+        { str: '准', joyogai: 'hyogai' },
+        { str: '擬', joyogai: 'hyogai' },
       ],
+      gokanHira: 'なぞら',
     },
-  },
-  {
-    open: {
-      expected: 'まとめよ',
-      tokens: [
-        {
-          surface_form: '纏めよ',
-          pos: '動詞',
-          basic_form: '纏める',
-          reading: 'マトメヨ',
-        },
-      ],
-    },
-    close: {
-      expected: '纏めよ',
-      tokens: [
-        {
-          surface_form: 'まとめよ',
-          pos: '動詞',
-          basic_form: 'まとめる',
-          reading: 'マトメヨ',
-        },
-      ],
-    },
-  },
-  // こだわる
-  {
-    open: {
-      warnOnly: true,
-      expected: ['こだわり', 'かかわり'],
-      tokens: [
-        {
-          surface_form: '拘り',
-          pos: '動詞',
-          basic_form: '拘る',
-        },
-      ],
-    },
-    close: [
-      {
-        expected: '拘り',
-        tokens: [
-          {
-            surface_form: 'こだわり',
-            pos: '動詞',
-            basic_form: 'こだわる',
-            reading: 'コダワリ',
-          },
-        ],
-      },
-      {
-        expected: '拘り',
-        tokens: [
-          {
-            surface_form: 'こだわり',
-            pos: '名詞',
-            basic_form: 'こだわり',
-            reading: 'コダワリ',
-          },
-        ],
-      },
-      {
-        expected: '拘り',
-        tokens: [
-          {
-            surface_form: 'かかわり',
-            pos: '動詞',
-            basic_form: 'かかわる',
-            reading: 'コダワリ',
-          },
-        ],
-      },
-    ],
-  },
-  // いじる
-  {
-    open: {
-      warnOnly: true,
-      expected: ['いじる', 'いじくる', 'まさぐる'],
-      tokens: [
-        {
-          surface_form: '弄る',
-          pos: '動詞',
-          basic_form: '弄る',
-        },
-      ],
-    },
-    close: [
-      {
-        expected: '弄る',
-        tokens: [
-          {
-            surface_form: 'いじる',
-            pos: '動詞',
-            basic_form: 'いじる',
-            reading: 'イジル',
-          },
-        ],
-      },
-      {
-        expected: '弄る',
-        tokens: [
-          {
-            surface_form: 'いじくる',
-            pos: '動詞',
-            basic_form: 'いじくる',
-            reading: 'イジクル',
-          },
-        ],
-      },
-      {
-        expected: '弄る',
-        tokens: [
-          {
-            surface_form: 'まさぐる',
-            pos: '動詞',
-            basic_form: 'まさぐる',
-            reading: 'マサグル',
-          },
-        ],
-      },
-    ],
-  },
+    'える',
+    '下1',
+  ),
 ];

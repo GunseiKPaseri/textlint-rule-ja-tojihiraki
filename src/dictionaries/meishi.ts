@@ -48,4 +48,15 @@ export const meishi: DictionaryInputs[] = [
       ],
     },
   },
+  {
+    expected: 'こだわり',
+    tokens: [
+      {
+        surface_form: '拘り',
+        pos: '名詞',
+        basic_form: '拘り',
+        reading: 'コダワリ',
+      },
+    ],
+  },
 ];

@@ -104,5 +104,6 @@ npm test
 - [漢字の閉じ開きとは？漢字とひらがなを使い分けて読みやすい文章を作成しよう - ALTENAS](https://altenas.jp/blog/chinese-characters-close-up-or-open)
 - [閉じるべき漢字・閉じたほうがいい漢字の見分け方【ひらがな→漢字】 - ライカツ](https://lifelikewriter.com/hiragana-kanji-rules/)
 - [何でもわかる 日本語便利帳 - WORD-WISE WEB](https://dictionary.sanseido-publ.co.jp/dict/ssd36029)
+- [新しい「公用文作成の要領」に向けて（報告）](https://www.bunka.go.jp/seisaku/bunkashingikai/kokugo/hokoku/pdf/92968501_01.pdf)
 
 このTextlintプロジェクトはakiomik氏の[textlint-rule-ja-hiraku](https://github.com/akiomik/textlint-rule-ja-hiraku)をベースとしております。
