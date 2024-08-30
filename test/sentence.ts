@@ -1,10 +1,10 @@
-import { type InvalidTestCases, runTestOpenClose } from './testutil';
+import type { InvalidTestCases } from './testutil';
 
-const validTestCases = [
+export const validTestCases = [
   'あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。',
 ];
 
-const invalidTestCases: InvalidTestCases = [
+export const invalidTestCases: InvalidTestCases = [
   [
     '丁度良かった。色々話を聞いて頂きたいと思って居た所でした。',
     'ちょうどよかった。いろいろ話を聞いていただきたいと思っていたところでした。',
@@ -34,5 +34,3 @@ const invalidTestCases: InvalidTestCases = [
     'both',
   ],
 ];
-
-runTestOpenClose('index', 'all', validTestCases, invalidTestCases);

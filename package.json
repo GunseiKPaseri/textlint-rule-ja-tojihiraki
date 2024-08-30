@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "files": ["lib/", "src/"],
   "scripts": {
-    "test": "npm run nodetest && npm run test:script",
+    "test": "npm run test:node && npm run test:script",
     "test:node": "node --experimental-strip-types --experimental-detect-module --no-warnings=ExperimentalWarning --test src/**/*.test.ts",
     "test:script": "textlint-scripts test",
     "build": "textlint-scripts build",
