@@ -2,7 +2,7 @@ import type { DictionaryInputs } from '../type';
 import { generateDoushiHenkaku } from './util';
 
 export const doushi: DictionaryInputs[] = [
-  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '分か' }, gokanHira: 'わか' }, 'る', '5'),
+  ...generateDoushiHenkaku({ type: 'doji', gokan: { str: '弄' }, gokanHira: ['いじ', 'いじく', 'まさぐ'] }, 'る', '5'),
   {
     open: {
       expected: 'でき',
@@ -123,8 +123,21 @@ export const doushi: DictionaryInputs[] = [
       ],
     },
   },
+  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '為', joyogai: 'hyogai' }, gokanHira: 'な' }, 'す', '5'),
+  ...generateDoushiHenkaku(
+    {
+      type: 'doon',
+      gokan: [
+        { str: '準', joyogai: 'hyogai' },
+        { str: '准', joyogai: 'hyogai' },
+        { str: '擬', joyogai: 'hyogai' },
+      ],
+      gokanHira: 'なぞら',
+    },
+    'える',
+    '下1',
+  ),
   ...generateDoushiHenkaku({ type: 'only', gokan: { str: '纏', joyogai: 'hyogai' }, gokanHira: 'まと' }, 'める', '下1'),
-  ...generateDoushiHenkaku({ type: 'doji', gokan: { str: '弄' }, gokanHira: ['いじ', 'いじく', 'まさぐ'] }, 'る', '5'),
   ...generateDoushiHenkaku(
     { type: 'doji', gokan: { str: '拘', joyogai: 'hyogai' }, gokanHira: ['こだわ', 'かかわ'] },
     'る',
@@ -142,18 +155,5 @@ export const doushi: DictionaryInputs[] = [
     'る',
     '5',
   ),
-  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '為', joyogai: 'hyogai' }, gokanHira: 'な' }, 'す', '5'),
-  ...generateDoushiHenkaku(
-    {
-      type: 'doon',
-      gokan: [
-        { str: '準', joyogai: 'hyogai' },
-        { str: '准', joyogai: 'hyogai' },
-        { str: '擬', joyogai: 'hyogai' },
-      ],
-      gokanHira: 'なぞら',
-    },
-    'える',
-    '下1',
-  ),
+  ...generateDoushiHenkaku({ type: 'only', gokan: { str: '分か' }, gokanHira: 'わか' }, 'る', '5'),
 ];

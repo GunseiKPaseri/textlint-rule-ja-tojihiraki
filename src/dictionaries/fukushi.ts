@@ -2,6 +2,29 @@ import type { DictionaryInputs } from '../type';
 
 export const fukushi: DictionaryInputs[] = [
   {
+    expected: 'あいにく',
+    tokens: [
+      {
+        surface_form: '生憎',
+        pos: '副詞',
+        basic_form: '生憎',
+        reading: 'アイニク',
+      },
+    ],
+  },
+  {
+    expected: 'あえて',
+    tokens: [
+      {
+        surface_form: '敢えて',
+        pos: '副詞',
+        basic_form: '敢えて',
+        reading: 'アエテ',
+      },
+    ],
+    joyogai: 'hyogai',
+  },
+  {
     expected: 'あまり',
     tokens: [
       {
@@ -43,6 +66,18 @@ export const fukushi: DictionaryInputs[] = [
     },
   },
   {
+    expected: 'あらかじめ',
+    tokens: [
+      {
+        surface_form: '予め',
+        pos: '副詞',
+        basic_form: '予め',
+        reading: 'アラカジメ',
+      },
+    ],
+    joyogai: 'hyogai',
+  },
+  {
     expected: 'いかにも',
     tokens: [
       {
@@ -66,6 +101,43 @@ export const fukushi: DictionaryInputs[] = [
     ],
   },
   {
+    open: {
+      warnOnly: true,
+      expected: ['いまだ', 'まだ'],
+      tokens: [
+        {
+          surface_form: '未だ',
+          pos: '副詞',
+          basic_form: '未だ',
+        },
+      ],
+    },
+    close: [
+      {
+        expected: '未だ',
+        tokens: [
+          {
+            surface_form: 'いまだ',
+            pos: '副詞',
+            basic_form: 'いまだ',
+            reading: 'イマダ',
+          },
+        ],
+      },
+      {
+        expected: '未だ',
+        tokens: [
+          {
+            surface_form: 'まだ',
+            pos: '副詞',
+            basic_form: 'まだ',
+            reading: 'マダ',
+          },
+        ],
+      },
+    ],
+  },
+  {
     expected: 'いろいろ',
     tokens: [
       {
@@ -75,6 +147,31 @@ export const fukushi: DictionaryInputs[] = [
         reading: 'イロイロ',
       },
     ],
+  },
+  // 所謂
+  {
+    expected: 'おのずから',
+    tokens: [
+      {
+        surface_form: '自ずから',
+        pos: '副詞',
+        basic_form: '自ずから',
+        reading: 'オノズカラ',
+      },
+    ],
+    joyogai: 'hyogai',
+  },
+  {
+    expected: 'おのずと',
+    tokens: [
+      {
+        surface_form: '自ずと',
+        pos: '副詞',
+        basic_form: '自ずと',
+        reading: 'オノズト',
+      },
+    ],
+    joyogai: 'hyogai',
   },
   {
     open: {
@@ -264,17 +361,28 @@ export const fukushi: DictionaryInputs[] = [
       ],
     },
   },
-  // {
-  //   expected: 'たとえ',
-  //   tokens: [
-  //     {
-  //       surface_form: '例え',
-  //       pos: '副詞',
-  //       basic_form: '例え',
-  //       reading: 'タトエ',
-  //     },
-  //   ],
-  // },
+  {
+    expected: 'たちまち',
+    tokens: [
+      {
+        surface_form: '忽ち',
+        pos: '副詞',
+        basic_form: '忽ち',
+        reading: 'タチマチ',
+      },
+    ],
+  },
+  {
+    expected: 'たとえ',
+    tokens: [
+      {
+        surface_form: '仮令',
+        pos: '副詞',
+        basic_form: '仮令',
+        reading: 'タトエ',
+      },
+    ],
+  },
   {
     expected: 'ちょうど',
     tokens: [
@@ -403,90 +511,5 @@ export const fukushi: DictionaryInputs[] = [
       },
     ],
     joyogai: 'hyogai',
-  },
-  {
-    expected: 'あえて',
-    tokens: [
-      {
-        surface_form: '敢えて',
-        pos: '副詞',
-        basic_form: '敢えて',
-        reading: 'アエテ',
-      },
-    ],
-    joyogai: 'hyogai',
-  },
-  {
-    expected: 'あらかじめ',
-    tokens: [
-      {
-        surface_form: '予め',
-        pos: '副詞',
-        basic_form: '予め',
-        reading: 'アラカジメ',
-      },
-    ],
-    joyogai: 'hyogai',
-  },
-  {
-    expected: 'おのずから',
-    tokens: [
-      {
-        surface_form: '自ずから',
-        pos: '副詞',
-        basic_form: '自ずから',
-        reading: 'オノズカラ',
-      },
-    ],
-    joyogai: 'hyogai',
-  },
-  {
-    expected: 'おのずと',
-    tokens: [
-      {
-        surface_form: '自ずと',
-        pos: '副詞',
-        basic_form: '自ずと',
-        reading: 'オノズト',
-      },
-    ],
-    joyogai: 'hyogai',
-  },
-  {
-    open: {
-      warnOnly: true,
-      expected: ['いまだ', 'まだ'],
-      tokens: [
-        {
-          surface_form: '未だ',
-          pos: '副詞',
-          basic_form: '未だ',
-        },
-      ],
-    },
-    close: [
-      {
-        expected: '未だ',
-        tokens: [
-          {
-            surface_form: 'いまだ',
-            pos: '副詞',
-            basic_form: 'いまだ',
-            reading: 'イマダ',
-          },
-        ],
-      },
-      {
-        expected: '未だ',
-        tokens: [
-          {
-            surface_form: 'まだ',
-            pos: '副詞',
-            basic_form: 'まだ',
-            reading: 'マダ',
-          },
-        ],
-      },
-    ],
   },
 ];

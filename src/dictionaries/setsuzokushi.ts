@@ -72,6 +72,19 @@ export const setsuzokushi: DictionaryInputs[] = [
     joyogai: 'hyogai',
   },
   {
+    close: {
+      expected: 'その上',
+      tokens: [
+        {
+          surface_form: 'そのうえ',
+          pos: '接続詞',
+          basic_form: 'そのうえ',
+          reading: 'ソノウエ',
+        },
+      ],
+    },
+  },
+  {
     expected: 'ただし',
     tokens: [
       {
@@ -178,19 +191,6 @@ export const setsuzokushi: DictionaryInputs[] = [
           pos: '助詞',
           basic_form: 'に',
           reading: 'ニ',
-        },
-      ],
-    },
-  },
-  {
-    close: {
-      expected: 'その上',
-      tokens: [
-        {
-          surface_form: 'そのうえ',
-          pos: '接続詞',
-          basic_form: 'そのうえ',
-          reading: 'ソノウエ',
         },
       ],
     },

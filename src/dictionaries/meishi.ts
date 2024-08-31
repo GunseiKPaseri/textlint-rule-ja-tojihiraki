@@ -2,6 +2,66 @@ import type { DictionaryInputs } from '../type';
 
 export const meishi: DictionaryInputs[] = [
   {
+    expected: 'こだわり',
+    tokens: [
+      {
+        surface_form: '拘り',
+        pos: '名詞',
+        basic_form: '拘り',
+        reading: 'コダワリ',
+      },
+    ],
+  },
+  {
+    open: [
+      {
+        expected: 'たとえ',
+        tokens: [
+          {
+            surface_form: '例え',
+            pos: '名詞',
+            basic_form: '例え',
+            reading: 'タトエ',
+          },
+        ],
+      },
+      {
+        expected: 'たとえ',
+        tokens: [
+          {
+            surface_form: '譬え',
+            pos: '名詞',
+            basic_form: '譬え',
+            reading: 'タトエ',
+          },
+        ],
+      },
+      {
+        expected: 'たとえ',
+        tokens: [
+          {
+            surface_form: '喩え',
+            pos: '名詞',
+            basic_form: '喩え',
+            reading: 'タトエ',
+          },
+        ],
+      },
+    ],
+    close: {
+      warnOnly: true,
+      expected: ['例え', '譬え', '喩え'],
+      tokens: [
+        {
+          surface_form: 'たとえ',
+          pos: '名詞',
+          basic_form: 'たとえ',
+          reading: 'タトエ',
+        },
+      ],
+    },
+  },
+  {
     expected: 'すべて',
     tokens: [
       {
@@ -47,16 +107,5 @@ export const meishi: DictionaryInputs[] = [
         },
       ],
     },
-  },
-  {
-    expected: 'こだわり',
-    tokens: [
-      {
-        surface_form: '拘り',
-        pos: '名詞',
-        basic_form: '拘り',
-        reading: 'コダワリ',
-      },
-    ],
   },
 ];
