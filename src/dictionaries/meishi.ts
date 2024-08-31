@@ -1,111 +1,48 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const meishi: DictionaryInputs[] = [
   {
     expected: 'こだわり',
-    tokens: [
-      {
-        surface_form: '拘り',
-        pos: '名詞',
-        basic_form: '拘り',
-        reading: 'コダワリ',
-      },
-    ],
+    tokens: [genToken('拘り', 'コダワリ', '名詞')],
   },
   {
     open: [
       {
         expected: 'たとえ',
-        tokens: [
-          {
-            surface_form: '例え',
-            pos: '名詞',
-            basic_form: '例え',
-            reading: 'タトエ',
-          },
-        ],
+        tokens: [genToken('例え', 'タトエ', '名詞')],
       },
       {
         expected: 'たとえ',
-        tokens: [
-          {
-            surface_form: '譬え',
-            pos: '名詞',
-            basic_form: '譬え',
-            reading: 'タトエ',
-          },
-        ],
+        tokens: [genToken('譬え', 'タトエ', '名詞')],
       },
       {
         expected: 'たとえ',
-        tokens: [
-          {
-            surface_form: '喩え',
-            pos: '名詞',
-            basic_form: '喩え',
-            reading: 'タトエ',
-          },
-        ],
+        tokens: [genToken('喩え', 'タトエ', '名詞')],
       },
     ],
     close: {
       warnOnly: true,
       expected: ['例え', '譬え', '喩え'],
-      tokens: [
-        {
-          surface_form: 'たとえ',
-          pos: '名詞',
-          basic_form: 'たとえ',
-          reading: 'タトエ',
-        },
-      ],
+      tokens: [genToken('たとえ', 'タトエ', '名詞')],
     },
   },
   {
     expected: 'すべて',
-    tokens: [
-      {
-        surface_form: '全て',
-        pos: '名詞',
-        basic_form: '全て',
-        reading: 'スベテ',
-      },
-    ],
+    tokens: [genToken('全て', 'スベテ', '名詞')],
   },
   {
     expected: 'もってのほか',
-    tokens: [
-      {
-        surface_form: 'もっての外',
-        pos: '名詞',
-        basic_form: 'もっての外',
-        reading: 'モッテノホカ',
-      },
-    ],
+    tokens: [genToken('もっての外', 'モッテノホカ', '名詞')],
   },
   {
     open: {
       expected: 'わずか',
-      tokens: [
-        {
-          surface_form: '僅か',
-          pos: '名詞',
-          basic_form: '僅か',
-          reading: 'ワズカ',
-        },
-      ],
+      tokens: [genToken('僅か', 'ワズカ', '名詞')],
     },
     close: {
       expected: '僅か',
-      tokens: [
-        {
-          surface_form: 'わずか',
-          pos: '副詞',
-          pos_detail_1: '助詞類接続',
-          basic_form: 'わずか',
-          reading: 'ワズカ',
-        },
-      ],
+      tokens: [genToken('わずか', 'ワズカ', '副詞', '助詞類接続')],
     },
   },
 ];

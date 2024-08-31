@@ -1,78 +1,31 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const keishikimeishi: DictionaryInputs[] = [
   {
     expected: 'うえ',
-    tokens: [
-      {
-        surface_form: '上',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '上',
-        reading: 'ウエ',
-      },
-    ],
+    tokens: [genToken('上', 'ウエ', '名詞', '非自立')],
   },
   {
     expected: 'うち',
-    tokens: [
-      {
-        surface_form: '内',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '内',
-        reading: 'ウチ',
-      },
-    ],
+    tokens: [genToken('内', 'ウチ', '名詞', '非自立')],
   },
   {
     expected: 'こと',
-    tokens: [
-      {
-        surface_form: '事',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '事',
-        reading: 'コト',
-      },
-    ],
+    tokens: [genToken('事', 'コト', '名詞', '非自立')],
   },
   {
     expected: 'ごと',
-    tokens: [
-      {
-        surface_form: '毎',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '毎',
-        reading: 'ゴト',
-      },
-    ],
+    tokens: [genToken('毎', 'ゴト', '名詞' /*, '非自立'*/)],
     joyogai: 'hyogai',
   },
   {
     expected: 'たび',
-    tokens: [
-      {
-        surface_form: '度',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '度',
-        reading: 'タビ',
-      },
-    ],
+    tokens: [genToken('度', 'タビ', '名詞' /*, '非自立'*/)],
   },
   {
     expected: 'ため',
-    tokens: [
-      {
-        surface_form: '為',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '為',
-        reading: 'タメ',
-      },
-    ],
+    tokens: [genToken('為', 'タメ', '名詞' /*, '非自立'*/)],
     joyogai: 'hyogai',
   },
   // {
@@ -89,112 +42,40 @@ export const keishikimeishi: DictionaryInputs[] = [
   // },
   {
     expected: 'とき',
-    tokens: [
-      {
-        surface_form: '時',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '時',
-        reading: 'トキ',
-      },
-    ],
+    tokens: [genToken('時', 'トキ', '名詞', '非自立')],
   },
   {
     expected: 'ところ',
-    tokens: [
-      {
-        surface_form: '所',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '所',
-        reading: 'トコロ',
-      },
-    ],
+    tokens: [genToken('所', 'トコロ', '名詞', '非自立')],
   },
   {
     expected: 'なか',
-    tokens: [
-      {
-        surface_form: '中',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '中',
-        reading: 'ナカ',
-      },
-    ],
+    tokens: [genToken('中', 'ナカ', '名詞', '非自立')],
   },
   {
     expected: 'はず',
-    tokens: [
-      {
-        surface_form: '筈',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '筈',
-        reading: 'ハズ',
-      },
-    ],
+    tokens: [genToken('筈', 'ハズ', '名詞' /*, '非自立'*/)],
     joyogai: 'joyogai',
   },
   {
     expected: 'ほう',
-    tokens: [
-      {
-        surface_form: '方',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '方',
-        reading: 'ホウ',
-      },
-    ],
+    tokens: [genToken('方', 'ホウ', '名詞' /*, '非自立'*/)],
   },
   {
     expected: 'ほか',
-    tokens: [
-      {
-        surface_form: '他',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '他',
-        reading: 'ホカ',
-      },
-    ],
+    tokens: [genToken('他', 'ホカ', '名詞' /*, '非自立'*/)],
     joyogai: 'hyogai',
   },
   {
     expected: 'もの',
-    tokens: [
-      {
-        surface_form: '物',
-        pos: '名詞',
-        pos_detail_1: '非自立',
-        basic_form: '物',
-        reading: 'モノ',
-      },
-    ],
+    tokens: [genToken('物', 'モノ', '名詞', '非自立')],
   },
   {
     expected: 'よう',
-    tokens: [
-      {
-        surface_form: '様',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '様',
-        reading: 'ヨウ',
-      },
-    ],
+    tokens: [genToken('様', 'ヨウ', '名詞' /*, '非自立'*/)],
   },
   {
     expected: 'わけ',
-    tokens: [
-      {
-        surface_form: '訳',
-        pos: '名詞',
-        // pos_detail_1: '非自立',
-        basic_form: '訳',
-        reading: 'ワケ',
-      },
-    ],
+    tokens: [genToken('訳', 'ワケ', '名詞' /*, '非自立'*/)],
   },
 ];

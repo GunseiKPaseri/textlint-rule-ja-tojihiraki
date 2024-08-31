@@ -1,240 +1,104 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const fukushi: DictionaryInputs[] = [
   {
     expected: 'あいにく',
-    tokens: [
-      {
-        surface_form: '生憎',
-        pos: '副詞',
-        basic_form: '生憎',
-        reading: 'アイニク',
-      },
-    ],
+    tokens: [genToken('生憎', 'アイニク', '副詞')],
   },
   {
     expected: 'あえて',
-    tokens: [
-      {
-        surface_form: '敢えて',
-        pos: '副詞',
-        basic_form: '敢えて',
-        reading: 'アエテ',
-      },
-    ],
+    tokens: [genToken('敢えて', 'アエテ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'あまり',
-    tokens: [
-      {
-        surface_form: '余り',
-        pos: '副詞',
-        basic_form: '余り',
-        reading: 'アマリ',
-      },
-    ],
+    tokens: [genToken('余り', 'アマリ', '副詞')],
   },
   {
     open: {
       expected: 'あとで',
-      tokens: [
-        {
-          surface_form: '後で',
-          pos: '副詞',
-          basic_form: '後で',
-          reading: 'アトデ',
-        },
-      ],
+      tokens: [genToken('後で', 'アトデ', '副詞')],
     },
     close: {
       expected: '後で',
-      tokens: [
-        {
-          surface_form: 'あと',
-          pos: '名詞',
-          basic_form: 'あと',
-          reading: 'アト',
-        },
-        {
-          surface_form: 'で',
-          pos: '助詞',
-          basic_form: 'で',
-          reading: 'デ',
-        },
-      ],
+      tokens: [genToken('あと', 'アト', '名詞'), genToken('で', 'デ', '助詞')],
     },
   },
   {
     expected: 'あらかじめ',
-    tokens: [
-      {
-        surface_form: '予め',
-        pos: '副詞',
-        basic_form: '予め',
-        reading: 'アラカジメ',
-      },
-    ],
+    tokens: [genToken('予め', 'アラカジメ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'いかにも',
-    tokens: [
-      {
-        surface_form: '如何にも',
-        pos: '副詞',
-        basic_form: '如何にも',
-        reading: 'イカニモ',
-      },
-    ],
+    tokens: [genToken('如何にも', 'イカニモ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'いっそう',
-    tokens: [
-      {
-        surface_form: '一層',
-        pos: '副詞',
-        basic_form: '一層',
-        reading: 'イッソウ',
-      },
-    ],
+    tokens: [genToken('一層', 'イッソウ', '副詞')],
   },
   {
     open: {
       warnOnly: true,
       expected: ['いまだ', 'まだ'],
-      tokens: [
-        {
-          surface_form: '未だ',
-          pos: '副詞',
-          basic_form: '未だ',
-        },
-      ],
+      tokens: [genToken('未だ', 'イマダ', '副詞')],
     },
     close: [
       {
         expected: '未だ',
-        tokens: [
-          {
-            surface_form: 'いまだ',
-            pos: '副詞',
-            basic_form: 'いまだ',
-            reading: 'イマダ',
-          },
-        ],
+        tokens: [genToken('いまだ', 'イマダ', '副詞')],
       },
       {
         expected: '未だ',
-        tokens: [
-          {
-            surface_form: 'まだ',
-            pos: '副詞',
-            basic_form: 'まだ',
-            reading: 'マダ',
-          },
-        ],
+        tokens: [genToken('まだ', 'マダ', '副詞')],
       },
     ],
   },
   {
     expected: 'いろいろ',
-    tokens: [
-      {
-        surface_form: '色々',
-        basic_form: '色々',
-        pos: '副詞',
-        reading: 'イロイロ',
-      },
-    ],
+    tokens: [genToken('色々', 'イロイロ', '副詞')],
   },
   // 所謂
   {
     expected: 'おのずから',
-    tokens: [
-      {
-        surface_form: '自ずから',
-        pos: '副詞',
-        basic_form: '自ずから',
-        reading: 'オノズカラ',
-      },
-    ],
+    tokens: [genToken('自ずから', 'オノズカラ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'おのずと',
-    tokens: [
-      {
-        surface_form: '自ずと',
-        pos: '副詞',
-        basic_form: '自ずと',
-        reading: 'オノズト',
-      },
-    ],
+    tokens: [genToken('自ずと', 'オノズト', '副詞')],
     joyogai: 'hyogai',
   },
   {
     open: {
       warnOnly: true,
       expected: ['およそ', 'おおよそ'],
-      tokens: [
-        {
-          surface_form: '凡そ',
-          basic_form: '凡そ',
-          pos: '副詞',
-        },
-      ],
+      tokens: [genToken('凡そ', 'オヨソ', '副詞')],
       joyogai: 'hyogai',
     },
     close: [
       {
         expected: '凡そ',
-        tokens: [
-          {
-            surface_form: 'およそ',
-            basic_form: 'およそ',
-            pos: '副詞',
-            reading: 'オヨソ',
-          },
-        ],
+        tokens: [genToken('およそ', 'オヨソ', '副詞')],
         joyogai: 'hyogai',
       },
       {
         expected: '凡そ',
-        tokens: [
-          {
-            surface_form: 'おおよそ',
-            basic_form: 'おおよそ',
-            pos: '副詞',
-            reading: 'オオヨソ',
-          },
-        ],
+        tokens: [genToken('おおよそ', 'オオヨソ', '副詞')],
         joyogai: 'hyogai',
       },
     ],
   },
   {
     expected: 'かえって',
-    tokens: [
-      {
-        surface_form: '却って',
-        pos: '副詞',
-        basic_form: '却って',
-        reading: 'カエッテ',
-      },
-    ],
+    tokens: [genToken('却って', 'カエッテ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'きわめて',
-    tokens: [
-      {
-        surface_form: '極めて',
-        pos: '副詞',
-        basic_form: '極めて',
-        reading: 'キワメテ',
-      },
-    ],
+    tokens: [genToken('極めて', 'キワメテ', '副詞')],
   },
   {
     expected: 'さすが',
@@ -249,48 +113,20 @@ export const fukushi: DictionaryInputs[] = [
   },
   {
     expected: 'さらに',
-    tokens: [
-      {
-        surface_form: '更に',
-        pos: '副詞',
-        basic_form: '更に',
-        reading: 'サラニ',
-      },
-    ],
+    tokens: [genToken('更に', 'サラニ', '副詞')],
   },
   {
     expected: 'しばらく',
-    tokens: [
-      {
-        surface_form: '暫く',
-        pos: '副詞',
-        basic_form: '暫く',
-        reading: 'シバラク',
-      },
-    ],
+    tokens: [genToken('暫く', 'シバラク', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'ずいぶん',
-    tokens: [
-      {
-        surface_form: '随分',
-        pos: '副詞',
-        basic_form: '随分',
-        reading: 'ズイブン',
-      },
-    ],
+    tokens: [genToken('随分', 'ズイブン', '副詞')],
   },
   {
     expected: 'すでに',
-    tokens: [
-      {
-        surface_form: '既に',
-        pos: '副詞',
-        basic_form: '既に',
-        reading: 'スデニ',
-      },
-    ],
+    tokens: [genToken('既に', 'スデニ', '副詞')],
   },
   {
     expected: 'せっかく',
@@ -305,25 +141,11 @@ export const fukushi: DictionaryInputs[] = [
   },
   {
     expected: 'ぜひ',
-    tokens: [
-      {
-        surface_form: '是非',
-        pos: '副詞',
-        basic_form: '是非',
-        reading: 'ゼヒ',
-      },
-    ],
+    tokens: [genToken('是非', 'ゼヒ', '副詞')],
   },
   {
     expected: 'たいそう',
-    tokens: [
-      {
-        surface_form: '大層',
-        pos: '副詞',
-        basic_form: '大層',
-        reading: 'タイソウ',
-      },
-    ],
+    tokens: [genToken('大層', 'タイソウ', '副詞')],
   },
   // {
   //   expected: 'たいへん',
@@ -339,177 +161,71 @@ export const fukushi: DictionaryInputs[] = [
   {
     open: {
       expected: 'たくさん',
-      tokens: [
-        {
-          surface_form: '沢山',
-          pos: '副詞',
-          basic_form: '沢山',
-          reading: 'タクサン',
-        },
-      ],
+      tokens: [genToken('沢山', 'タクサン', '副詞')],
     },
     close: {
       expected: '沢山',
-      tokens: [
-        {
-          surface_form: 'たくさん',
-          pos: '名詞',
-          pos_detail_1: '副詞可能',
-          basic_form: 'たくさん',
-          reading: 'タクサン',
-        },
-      ],
+      tokens: [genToken('たくさん', 'タクサン', '名詞', '副詞可能')],
     },
   },
   {
     expected: 'たちまち',
-    tokens: [
-      {
-        surface_form: '忽ち',
-        pos: '副詞',
-        basic_form: '忽ち',
-        reading: 'タチマチ',
-      },
-    ],
+    tokens: [genToken('忽ち', 'タチマチ', '副詞')],
   },
   {
     expected: 'たとえ',
-    tokens: [
-      {
-        surface_form: '仮令',
-        pos: '副詞',
-        basic_form: '仮令',
-        reading: 'タトエ',
-      },
-    ],
+    tokens: [genToken('仮令', 'タトエ', '副詞')],
   },
   {
     expected: 'ちょうど',
-    tokens: [
-      {
-        surface_form: '丁度',
-        pos: '副詞',
-        basic_form: '丁度',
-        reading: 'チョウド',
-      },
-    ],
+    tokens: [genToken('丁度', 'チョウド', '副詞')],
   },
   {
     expected: 'ときどき',
-    tokens: [
-      {
-        surface_form: '時々',
-        pos: '副詞',
-        basic_form: '時々',
-        reading: 'トキドキ',
-      },
-    ],
+    tokens: [genToken('時々', 'トキドキ', '副詞')],
   },
   {
     expected: 'なぜ',
-    tokens: [
-      {
-        surface_form: '何故',
-        pos: '副詞',
-        basic_form: '何故',
-        reading: 'ナゼ',
-      },
-    ],
+    tokens: [genToken('何故', 'ナゼ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'なぜか',
-    tokens: [
-      {
-        surface_form: '何故か',
-        pos: '副詞',
-        basic_form: '何故か',
-        reading: 'ナゼカ',
-      },
-    ],
+    tokens: [genToken('何故か', 'ナゼカ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'ほとんど',
-    tokens: [
-      {
-        surface_form: '殆ど',
-        pos: '副詞',
-        basic_form: '殆ど',
-        reading: 'ホトンド',
-      },
-    ],
+    tokens: [genToken('殆ど', 'ホトンド', '副詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'まさに',
-    tokens: [
-      {
-        surface_form: '正に',
-        pos: '副詞',
-        basic_form: '正に',
-        reading: 'マサニ',
-      },
-    ],
+    tokens: [genToken('正に', 'マサニ', '副詞')],
   },
   {
     expected: 'まず',
-    tokens: [
-      {
-        surface_form: '先ず',
-        pos: '副詞',
-        basic_form: '先ず',
-        reading: 'マズ',
-      },
-    ],
+    tokens: [genToken('先ず', 'マズ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'むしろ',
-    tokens: [
-      {
-        surface_form: '寧ろ',
-        pos: '副詞',
-        basic_form: '寧ろ',
-        reading: 'ムシロ',
-      },
-    ],
+    tokens: [genToken('寧ろ', 'ムシロ', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'もちろん',
-    tokens: [
-      {
-        surface_form: '勿論',
-        pos: '副詞',
-        basic_form: '勿論',
-        reading: 'モチロン',
-      },
-    ],
+    tokens: [genToken('勿論', 'モチロン', '副詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'ようやく',
-    tokens: [
-      {
-        surface_form: '漸く',
-        pos: '副詞',
-        basic_form: '漸く',
-        reading: 'ヨウヤク',
-      },
-    ],
+    tokens: [genToken('漸く', 'ヨウヤク', '副詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'よろしく',
-    tokens: [
-      {
-        surface_form: '宜しく',
-        pos: '副詞',
-        basic_form: '宜しく',
-        reading: 'ヨロシク',
-      },
-    ],
+    tokens: [genToken('宜しく', 'ヨロシク', '副詞')],
     joyogai: 'hyogai',
   },
 ];

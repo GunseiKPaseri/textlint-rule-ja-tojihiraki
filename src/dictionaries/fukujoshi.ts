@@ -1,54 +1,23 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const fukujoshi: DictionaryInputs[] = [
   {
     expected: 'くらい',
-    tokens: [
-      {
-        surface_form: '位',
-        pos: '助詞',
-        pos_detail_1: '副助詞',
-        basic_form: '位',
-        reading: 'クライ',
-      },
-    ],
+    tokens: [genToken('位', 'クライ', '助詞', '副助詞')],
   },
   {
     expected: 'など',
-    tokens: [
-      {
-        surface_form: '等',
-        pos: '助詞',
-        pos_detail_1: '副助詞',
-        basic_form: '等',
-        reading: 'ナド',
-      },
-    ],
+    tokens: [genToken('等', 'ナド', '助詞', '副助詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'ほど',
-    tokens: [
-      {
-        surface_form: '程',
-        pos: '助詞',
-        pos_detail_1: '副助詞',
-        basic_form: '程',
-        reading: 'ホド',
-      },
-    ],
+    tokens: [genToken('程', 'ホド', '助詞', '副助詞')],
   },
   {
     expected: 'まで',
-    tokens: [
-      {
-        surface_form: '迄',
-        pos: '助詞',
-        pos_detail_1: '副助詞',
-        basic_form: '迄',
-        reading: 'マデ',
-      },
-    ],
+    tokens: [genToken('迄', 'マデ', '助詞', '副助詞')],
     joyogai: 'joyogai',
   },
 ];

@@ -1,15 +1,9 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const kandoushi: DictionaryInputs[] = [
   {
     expected: 'ありがとう',
-    tokens: [
-      {
-        surface_form: '有難う',
-        pos: '感動詞',
-        basic_form: '有難う',
-        reading: 'アリガトウ',
-      },
-    ],
+    tokens: [genToken('有難う', 'アリガトウ', '感動詞')],
   },
 ];

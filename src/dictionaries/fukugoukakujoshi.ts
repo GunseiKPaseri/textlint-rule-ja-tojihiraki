@@ -1,55 +1,20 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const fukugoukakujoshi: DictionaryInputs[] = [
   {
     open: {
       expected: 'をはじめ',
-      tokens: [
-        {
-          surface_form: 'を',
-          pos: '助詞',
-          pos_detail_1: '格助詞',
-          basic_form: 'を',
-          reading: 'ヲ',
-        },
-        {
-          surface_form: '始め',
-          pos: '名詞',
-          basic_form: '始め',
-          reading: 'ハジメ',
-        },
-      ],
+      tokens: [genToken('を', 'ヲ', '助詞', '格助詞'), genToken('始め', 'ハジメ', '名詞')],
     },
     close: {
       expected: 'を始め',
-      tokens: [
-        {
-          surface_form: 'を',
-          pos: '助詞',
-          pos_detail_1: '格助詞',
-          basic_form: 'を',
-          reading: 'ヲ',
-        },
-        {
-          surface_form: 'はじめ',
-          pos: '名詞',
-          basic_form: 'はじめ',
-          reading: 'ハジメ',
-        },
-      ],
+      tokens: [genToken('を', 'ヲ', '助詞', '格助詞'), genToken('はじめ', 'ハジメ', '名詞')],
     },
   },
   {
     expected: 'をもって',
-    tokens: [
-      {
-        surface_form: 'を以て',
-        pos: '助詞',
-        pos_detail_1: '格助詞',
-        basic_form: 'を以て',
-        reading: 'ヲモッテ',
-      },
-    ],
+    tokens: [genToken('を以て', 'ヲモッテ', '助詞', '格助詞')],
     joyogai: 'hyogai',
   },
 ];

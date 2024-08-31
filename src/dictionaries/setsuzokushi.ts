@@ -1,198 +1,84 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const setsuzokushi: DictionaryInputs[] = [
   {
     expected: 'あるいは',
-    tokens: [
-      {
-        surface_form: '或いは',
-        pos: '接続詞',
-        basic_form: '或いは',
-        reading: 'アルイハ',
-      },
-    ],
+    tokens: [genToken('或いは', 'アルイハ', '接続詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'および',
-    tokens: [
-      {
-        surface_form: '及び',
-        pos: '接続詞',
-        basic_form: '及び',
-        reading: 'オヨビ',
-      },
-    ],
+    tokens: [genToken('及び', 'オヨビ', '接続詞')],
   },
   {
     open: {
       expected: 'かつ',
       tokens: [
-        {
-          surface_form: '且つ',
-          pos: '副詞', // 副・接
-          basic_form: '且つ',
-          reading: 'カツ',
-        },
+        genToken('且つ', 'カツ', '副詞'), // 副・接
       ],
     },
     close: {
       expected: '且つ',
       tokens: [
-        {
-          surface_form: 'かつ',
-          pos: '接続詞', // 副・接
-          basic_form: 'かつ',
-          reading: 'カツ',
-        },
+        genToken('かつ', 'カツ', '接続詞'), // 副・接
       ],
     },
   },
   {
     expected: 'したがって',
-    tokens: [
-      {
-        surface_form: '従って',
-        pos: '接続詞',
-        basic_form: '従って',
-        reading: 'シタガッテ',
-      },
-    ],
+    tokens: [genToken('従って', 'シタガッテ', '接続詞')],
   },
   {
     expected: 'すなわち',
-    tokens: [
-      {
-        surface_form: '即ち',
-        pos: '接続詞',
-        basic_form: '即ち',
-        reading: 'スナワチ',
-      },
-    ],
+    tokens: [genToken('即ち', 'スナワチ', '接続詞')],
     joyogai: 'hyogai',
   },
   {
     close: {
       expected: 'その上',
-      tokens: [
-        {
-          surface_form: 'そのうえ',
-          pos: '接続詞',
-          basic_form: 'そのうえ',
-          reading: 'ソノウエ',
-        },
-      ],
+      tokens: [genToken('そのうえ', 'ソノウエ', '接続詞')],
     },
   },
   {
     expected: 'ただし',
-    tokens: [
-      {
-        surface_form: '但し',
-        pos: '接続詞',
-        basic_form: '但し',
-        reading: 'タダシ',
-      },
-    ],
+    tokens: [genToken('但し', 'タダシ', '接続詞')],
   },
   {
     expected: 'ちなみに',
-    tokens: [
-      {
-        surface_form: '因みに',
-        pos: '接続詞',
-        basic_form: '因みに',
-        reading: 'チナミニ',
-      },
-    ],
+    tokens: [genToken('因みに', 'チナミニ', '接続詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'なお',
-    tokens: [
-      {
-        surface_form: '尚',
-        pos: '接続詞',
-        basic_form: '尚',
-        reading: 'ナオ',
-      },
-    ],
+    tokens: [genToken('尚', 'ナオ', '接続詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'ならびに',
-    tokens: [
-      {
-        surface_form: '並びに',
-        pos: '接続詞',
-        basic_form: '並びに',
-        reading: 'ナラビニ',
-      },
-    ],
+    tokens: [genToken('並びに', 'ナラビニ', '接続詞')],
   },
   {
     expected: 'また',
-    tokens: [
-      {
-        surface_form: '又',
-        pos: '接続詞',
-        basic_form: '又',
-        reading: 'マタ',
-      },
-    ],
+    tokens: [genToken('又', 'マタ', '接続詞')],
   },
   {
     expected: 'または',
-    tokens: [
-      {
-        surface_form: '又は',
-        pos: '接続詞',
-        basic_form: '又は',
-        reading: 'マタハ',
-      },
-    ],
+    tokens: [genToken('又は', 'マタハ', '接続詞')],
   },
   {
     expected: 'もしくは',
-    tokens: [
-      {
-        surface_form: '若しくは',
-        pos: '接続詞',
-        basic_form: '若しくは',
-        reading: 'モシクハ',
-      },
-    ],
+    tokens: [genToken('若しくは', 'モシクハ', '接続詞')],
     joyogai: 'hyogai',
   },
   {
     open: {
       expected: 'ゆえに',
-      tokens: [
-        {
-          surface_form: '故に',
-          pos: '接続詞',
-          basic_form: '故に',
-          reading: 'ユエニ',
-        },
-      ],
+      tokens: [genToken('故に', 'ユエニ', '接続詞')],
     },
     close: {
       expected: '故に',
-      tokens: [
-        {
-          surface_form: 'ゆえ',
-          pos: '名詞',
-          pos_detail_1: '接尾',
-          basic_form: 'ゆえ',
-          reading: 'ユエ',
-        },
-        {
-          surface_form: 'に',
-          pos: '助詞',
-          basic_form: 'に',
-          reading: 'ニ',
-        },
-      ],
+      tokens: [genToken('ゆえ', 'ユエ', '名詞', '接尾'), genToken('に', 'ニ', '助詞')],
     },
   },
 ];

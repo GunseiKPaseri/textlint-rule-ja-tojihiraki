@@ -1,107 +1,44 @@
 import type { DictionaryInputs } from '../type';
+import { genToken } from './util';
 
 export const daimeishi: DictionaryInputs[] = [
   {
     expected: 'あなた',
-    tokens: [
-      {
-        surface_form: '貴方',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '貴方',
-        reading: 'アナタ',
-      },
-    ],
+    tokens: [genToken('貴方', 'アナタ', '名詞', '代名詞')],
   },
   {
     expected: 'いずれ',
-    tokens: [
-      {
-        surface_form: '何れ',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '何れ',
-        reading: 'イズレ',
-      },
-    ],
+    tokens: [genToken('何れ', 'イズレ', '名詞', '代名詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'ここ',
-    tokens: [
-      {
-        surface_form: '此処',
-        pos: '名詞',
-        // pos_detail_1: '代名詞',
-        basic_form: '此処',
-        reading: 'ココ',
-      },
-    ],
+    tokens: [genToken('此処', 'ココ', '名詞' /*, '代名詞'*/)],
     joyogai: 'joyogai',
   },
   {
     expected: 'これ',
-    tokens: [
-      {
-        surface_form: '此れ',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '此れ',
-        reading: 'コレ',
-      },
-    ],
+    tokens: [genToken('此れ', 'コレ', '名詞', '代名詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'そこ',
-    tokens: [
-      {
-        surface_form: '其処',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '其処',
-        reading: 'ソコ',
-      },
-    ],
+    tokens: [genToken('其処', 'ソコ', '名詞', '代名詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'それ',
-    tokens: [
-      {
-        surface_form: '其れ',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '其れ',
-        reading: 'ソレ',
-      },
-    ],
+    tokens: [genToken('其れ', 'ソレ', '名詞', '代名詞')],
     joyogai: 'joyogai',
   },
   {
     expected: 'どこ',
-    tokens: [
-      {
-        surface_form: '何処',
-        pos: '名詞',
-        pos_detail_1: '代名詞',
-        basic_form: '何処',
-        reading: 'ドコ',
-      },
-    ],
+    tokens: [genToken('何処', 'ドコ', '名詞', '代名詞')],
     joyogai: 'hyogai',
   },
   {
     expected: 'どなた',
-    tokens: [
-      {
-        surface_form: '何方',
-        pos: '名詞',
-        // pos_detail_1: '代名詞',
-        basic_form: '何方',
-        reading: 'ドナタ',
-      },
-    ],
+    tokens: [genToken('何方', 'ドナタ', '名詞' /*, '代名詞'*/)],
     joyogai: 'hyogai',
   },
 ];

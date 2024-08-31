@@ -218,3 +218,24 @@ export const generateDoushiHenkaku = (
     }
   });
 };
+
+export const genToken = (
+  form: string,
+  reading: string,
+  pos: string,
+  pos_detail_1?: string,
+): ExpectedTokenWithCapture =>
+  pos_detail_1
+    ? {
+        surface_form: form,
+        pos,
+        pos_detail_1,
+        basic_form: form,
+        reading,
+      }
+    : {
+        surface_form: form,
+        pos,
+        basic_form: form,
+        reading,
+      };
