@@ -26,6 +26,10 @@ export const setsuzokushi: DictionaryInputs[] = [
     },
   },
   {
+    expected: 'しかし',
+    tokens: [genToken('然し', 'シカシ', '接続詞')],
+  },
+  {
     expected: 'したがって',
     tokens: [genToken('従って', 'シタガッテ', '接続詞')],
   },
@@ -70,6 +74,11 @@ export const setsuzokushi: DictionaryInputs[] = [
     expected: 'もしくは',
     tokens: [genToken('若しくは', 'モシクハ', '接続詞')],
     joyogai: 'hyogai',
+  },
+  {
+    expected: 'もっとも',
+    tokens: [genToken('尤も', 'モットモ', '接続詞')],
+    joyogai: 'joyogai',
   },
   {
     open: {

@@ -1,6 +1,7 @@
 import { type InvalidTestCases, runTestOpenClose } from './testutil';
 
 const invalidTestCases: InvalidTestCases = [
+  ['この財布は幾らですか', 'この財布はいくらですか', [[[5, 6], '幾ら(イクラ)']]],
   [
     '拘りスカーフ',
     'こだわりスカーフ',
@@ -8,6 +9,7 @@ const invalidTestCases: InvalidTestCases = [
     'closeOnly',
     'closeOnly',
   ],
+  ['強かな造りの家', 'したたかな造りの家', [[[0, 1], '強か(シタタカ)']]],
   ['この世全ての悪', 'この世すべての悪', [[[3, 4], '全て(スベテ)']]],
   //['物の例えだ', '物のたとえだ', [[[2, 3], '例え(タトエ)', undefined, '例え(タトエ)|譬え(タトエ)|喩え(タトエ)']], 'both', 'openOnly'],
   [

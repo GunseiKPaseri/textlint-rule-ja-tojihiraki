@@ -2,79 +2,17 @@ import type { ExpectedTokenWithCapture } from 'morpheme-match-textlint';
 import type { DictionaryInputs, JOYOGAI } from '../type.ts';
 import { hiraToKana } from '../util.ts';
 
-const table5: { [key: string]: readonly string[] } = {
-  く: ['か', 'き', 'く', 'け', 'こ', 'い'],
-  ぐ: ['が', 'ぎ', 'ぐ', 'げ', 'ご', 'い'],
-  す: ['さ', 'し', 'す', 'せ', 'そ'],
-  つ: ['た', 'ち', 'つ', 'て', 'と', 'っ'],
-  ぬ: ['な', 'に', 'ぬ', 'ね', 'の', 'ん'],
-  ぶ: ['ば', 'び', 'ぶ', 'べ', 'ぼ', 'ん'],
-  む: ['ま', 'み', 'む', 'め', 'も', 'ん'],
-  る: ['ら', 'り', 'る', 'れ', 'ろ', 'っ'],
-  う: ['わ', 'い', 'う', 'え', 'を', 'っ'],
-} as const;
+type GOKANSET =
+  | { type: 'only'; gokan: { str: string; joyogai?: JOYOGAI }; gokanHira: string }
+  | { type: 'doon'; gokan: { str: string; joyogai?: JOYOGAI }[]; gokanHira: string }
+  | { type: 'doji'; gokan: { str: string; joyogai?: JOYOGAI }; gokanHira: string[] };
 
-const tablek1: { [key: string]: readonly string[] } = {
-  いる: ['い', 'いる', 'いれ', 'いろ', 'いよ'],
-  きる: ['き', 'きる', 'きれ', 'きろ', 'きよ'],
-  ちる: ['ち', 'ちる', 'ちれ', 'ちろ', 'ちよ'],
-  にる: ['に', 'にる', 'にれ', 'にろ', 'によ'],
-  ひる: ['ひ', 'ひる', 'ひれ', 'ひろ', 'ひよ'],
-  びる: ['び', 'びる', 'びれ', 'びろ', 'びよ'],
-  みる: ['み', 'みる', 'みれ', 'みろ', 'みよ'],
-  りる: ['り', 'りる', 'りれ', 'りろ', 'りよ'],
-} as const;
-
-const tables1: { [key: string]: readonly string[] } = {
-  える: ['え', 'える', 'えれ', 'えろ', 'えよ'],
-  ける: ['け', 'ける', 'けれ', 'けろ', 'けよ'],
-  げる: ['げ', 'げる', 'げれ', 'げろ', 'げよ'],
-  せる: ['せ', 'せる', 'せれ', 'せろ', 'せよ'],
-  ぜる: ['ぜ', 'ぜる', 'ぜれ', 'ぜろ', 'ぜよ'],
-  てる: ['て', 'てる', 'てれ', 'てろ', 'てよ'],
-  でる: ['で', 'でる', 'でれ', 'でろ', 'でよ'],
-  ねる: ['ね', 'ねる', 'ねれ', 'ねろ', 'ねよ'],
-  へる: ['へ', 'へる', 'へれ', 'へろ', 'へよ'],
-  べる: ['べ', 'べる', 'べれ', 'べろ', 'べよ'],
-  める: ['め', 'める', 'めれ', 'めろ', 'めよ'],
-  れる: ['れ', 'れる', 'れれ', 'れろ', 'れよ'],
-} as const;
-
-const tablesh: { [key: string]: readonly string[] } = {
-  する: ['し', 'せ', 'する', 'すれ', 'しろ', 'せよ'],
-  ずる: ['じ', 'ぜ', 'ずる', 'ずれ', 'じろ', 'ぜよ'],
-} as const;
-
-const tablekh = ['こ', 'き', 'く', 'くる', 'くれ', 'こい'] as const;
-
-type DoushiHenkan = '5' | '上1' | '下1' | 'サ変' | 'カ変';
-
-const getDoushiHenkanTable = (gokanHira: string | string[], gobi: string, henkan: DoushiHenkan) => {
-  if (gokanHira === 'い' && gobi === 'く') return ['か', 'き', 'く', 'け', 'こ', 'っ'];
-  switch (henkan) {
-    case '5':
-      return table5[gobi] ?? [];
-    case '上1':
-      return tablek1[gobi] ?? [];
-    case '下1':
-      return tables1[gobi] ?? [];
-    case 'サ変':
-      return tablesh[gobi] ?? [];
-    case 'カ変':
-      return tablekh;
-  }
-};
-
-export const generateDoushiHenkaku = (
-  gokanset:
-    | { type: 'only'; gokan: { str: string; joyogai?: JOYOGAI }; gokanHira: string }
-    | { type: 'doon'; gokan: { str: string; joyogai?: JOYOGAI }[]; gokanHira: string }
-    | { type: 'doji'; gokan: { str: string; joyogai?: JOYOGAI }; gokanHira: string[] },
+const generateHenkaku = (
+  table: readonly string[],
+  gokanset: GOKANSET,
   gobi: string,
-  henkan: DoushiHenkan,
-  token: ExpectedTokenWithCapture = { pos: '動詞' },
+  token?: ExpectedTokenWithCapture,
 ): DictionaryInputs[] => {
-  const table = getDoushiHenkanTable(gokanset.gokanHira, gobi, henkan);
   return table.map((henka) => {
     switch (gokanset.type) {
       case 'doon': {
@@ -217,6 +155,79 @@ export const generateDoushiHenkaku = (
       }
     }
   });
+};
+
+const table5: { [key: string]: readonly string[] } = {
+  く: ['か', 'き', 'く', 'け', 'こ', 'い'],
+  ぐ: ['が', 'ぎ', 'ぐ', 'げ', 'ご', 'い'],
+  す: ['さ', 'し', 'す', 'せ', 'そ'],
+  つ: ['た', 'ち', 'つ', 'て', 'と', 'っ'],
+  ぬ: ['な', 'に', 'ぬ', 'ね', 'の', 'ん'],
+  ぶ: ['ば', 'び', 'ぶ', 'べ', 'ぼ', 'ん'],
+  む: ['ま', 'み', 'む', 'め', 'も', 'ん'],
+  る: ['ら', 'り', 'る', 'れ', 'ろ', 'っ'],
+  う: ['わ', 'い', 'う', 'え', 'を', 'っ'],
+} as const;
+
+const tablek1: { [key: string]: readonly string[] } = {
+  いる: ['い', 'いる', 'いれ', 'いろ', 'いよ'],
+  きる: ['き', 'きる', 'きれ', 'きろ', 'きよ'],
+  ちる: ['ち', 'ちる', 'ちれ', 'ちろ', 'ちよ'],
+  にる: ['に', 'にる', 'にれ', 'にろ', 'によ'],
+  ひる: ['ひ', 'ひる', 'ひれ', 'ひろ', 'ひよ'],
+  びる: ['び', 'びる', 'びれ', 'びろ', 'びよ'],
+  みる: ['み', 'みる', 'みれ', 'みろ', 'みよ'],
+  りる: ['り', 'りる', 'りれ', 'りろ', 'りよ'],
+} as const;
+
+const tables1: { [key: string]: readonly string[] } = {
+  える: ['え', 'える', 'えれ', 'えろ', 'えよ'],
+  ける: ['け', 'ける', 'けれ', 'けろ', 'けよ'],
+  げる: ['げ', 'げる', 'げれ', 'げろ', 'げよ'],
+  せる: ['せ', 'せる', 'せれ', 'せろ', 'せよ'],
+  ぜる: ['ぜ', 'ぜる', 'ぜれ', 'ぜろ', 'ぜよ'],
+  てる: ['て', 'てる', 'てれ', 'てろ', 'てよ'],
+  でる: ['で', 'でる', 'でれ', 'でろ', 'でよ'],
+  ねる: ['ね', 'ねる', 'ねれ', 'ねろ', 'ねよ'],
+  へる: ['へ', 'へる', 'へれ', 'へろ', 'へよ'],
+  べる: ['べ', 'べる', 'べれ', 'べろ', 'べよ'],
+  める: ['め', 'める', 'めれ', 'めろ', 'めよ'],
+  れる: ['れ', 'れる', 'れれ', 'れろ', 'れよ'],
+} as const;
+
+const tablesh: { [key: string]: readonly string[] } = {
+  する: ['し', 'せ', 'する', 'すれ', 'しろ', 'せよ'],
+  ずる: ['じ', 'ぜ', 'ずる', 'ずれ', 'じろ', 'ぜよ'],
+} as const;
+
+const tablekh = ['こ', 'き', 'く', 'くる', 'くれ', 'こい'] as const;
+
+type DoushiHenkan = '5' | '上1' | '下1' | 'サ変' | 'カ変';
+
+const getDoushiHenkanTable = (gokanHira: string | string[], gobi: string, henkan: DoushiHenkan) => {
+  if (gokanHira === 'い' && gobi === 'く') return ['か', 'き', 'く', 'け', 'こ', 'っ'];
+  switch (henkan) {
+    case '5':
+      return table5[gobi] ?? [];
+    case '上1':
+      return tablek1[gobi] ?? [];
+    case '下1':
+      return tables1[gobi] ?? [];
+    case 'サ変':
+      return tablesh[gobi] ?? [];
+    case 'カ変':
+      return tablekh;
+  }
+};
+
+export const generateDoushiHenkaku = (
+  gokanset: GOKANSET,
+  gobi: string,
+  henkan: DoushiHenkan,
+  token: ExpectedTokenWithCapture = { pos: '動詞' },
+): DictionaryInputs[] => {
+  const table = getDoushiHenkanTable(gokanset.gokanHira, gobi, henkan);
+  return generateHenkaku(table, gokanset, gobi, token);
 };
 
 export const genToken = (

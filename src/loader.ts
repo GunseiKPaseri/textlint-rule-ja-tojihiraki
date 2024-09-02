@@ -54,7 +54,8 @@ function getSurfaceFrom(dic: Omit<Dictionary, 'message'>): string {
     .map((token) => (Array.isArray(token.surface_form) ? token.surface_form.join('') : token.surface_form ?? ''))
     .join('');
 }
-function getReading(dic: Omit<Dictionary, 'message'>): string {
+
+function getForceReading(dic: Omit<Dictionary, 'message'>): string {
   return dic.tokens
     .map((token) =>
       Array.isArray(token.reading)
@@ -63,6 +64,10 @@ function getReading(dic: Omit<Dictionary, 'message'>): string {
           hiraToKana(Array.isArray(token.surface_form) ? token.surface_form.join('') : token.surface_form ?? ''),
     )
     .join('');
+}
+function getReading(dic: Omit<Dictionary, 'message'>): string | undefined {
+  if (dic.tokens.some((token) => token.reading === undefined)) return undefined;
+  return getForceReading(dic);
 }
 
 function shouldOpenDictionary(
@@ -89,7 +94,7 @@ function shouldOpenDictionary(
       },
     ];
   }
-  const reading = getReading(openItem);
+  const reading = getReading(openItem) ?? hiraToKana(openItem.expected);
   if (!isRuleEnabled(reading, nameLoma, 'open', ruleOptionSet)) return [];
   const shouldOpenedText = getSurfaceFrom(openItem);
   return [
@@ -152,7 +157,7 @@ function shouldCloseDictionary(
   },
   closeItem: DictionaryInput,
 ): Dictionary[] {
-  const reading = getReading({ tokens: closeItem.tokens });
+  const reading = getForceReading({ tokens: closeItem.tokens });
   if (!isRuleEnabled(reading, nameLoma, 'close', ruleOptionSet)) return [];
   if (closeItem.warnOnly) {
     return [

@@ -3,8 +3,20 @@ import { genToken } from './util';
 
 export const meishi: DictionaryInputs[] = [
   {
+    expected: 'いくら',
+    tokens: [genToken('幾ら', 'イクラ', '名詞')],
+  },
+  {
     expected: 'こだわり',
     tokens: [genToken('拘り', 'コダワリ', '名詞')],
+  },
+  {
+    expected: 'したたか',
+    tokens: [genToken('強か', 'シタタカ', '名詞', '形容動詞語幹')],
+  },
+  {
+    expected: 'すべて',
+    tokens: [genToken('全て', 'スベテ', '名詞')],
   },
   {
     open: [
@@ -26,10 +38,6 @@ export const meishi: DictionaryInputs[] = [
       expected: ['例え', '譬え', '喩え'],
       tokens: [genToken('たとえ', 'タトエ', '名詞')],
     },
-  },
-  {
-    expected: 'すべて',
-    tokens: [genToken('全て', 'スベテ', '名詞')],
   },
   {
     expected: 'もってのほか',

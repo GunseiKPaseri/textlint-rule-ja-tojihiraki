@@ -48,6 +48,30 @@ export const keiyoushi: DictionaryInputs[] = [
     ],
   },
   {
+    open: {
+      expected: 'つつがなく',
+      tokens: [
+        {
+          surface_form: '恙無く',
+          pos: '形容詞',
+          basic_form: '恙無い',
+          reading: 'ツツガナク',
+        },
+      ],
+    },
+    close: {
+      expected: '恙無く',
+      tokens: [
+        {
+          surface_form: 'つつがなく',
+          pos: '形容詞',
+          basic_form: 'つつがない',
+          reading: 'ツツガナク',
+        },
+      ],
+    },
+  },
+  {
     expected: 'ない',
     tokens: [
       {
